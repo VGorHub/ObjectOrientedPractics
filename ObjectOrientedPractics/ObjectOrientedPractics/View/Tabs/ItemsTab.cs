@@ -114,8 +114,12 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _items.RemoveAt(index);
                 ItemsListBox.Items.RemoveAt(index);
+                _name = "";
+                _info = "";
+                _cost = "";
                 ClearInputs();
             }
+            
         }
 
         private void ItemsTab_Load(object sender, EventArgs e)
