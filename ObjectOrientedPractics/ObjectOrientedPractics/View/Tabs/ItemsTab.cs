@@ -16,7 +16,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private List<Item> _items = new List<Item>();
         private string _name;
         private string _info;
-        private string _cost;
+        private string _cost;        
 
 
         public ItemsTab()
@@ -131,6 +131,13 @@ namespace ObjectOrientedPractics.View.Tabs
         private void ItemsTab_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void GenerateButton_Click(object sender, EventArgs e)
+        {
+            Item newItem = ItemFactory.GenerateItem(_items);
+            _items.Add(newItem);
+            ItemsListBox.Items.Add(newItem.Name);
         }
     }
 }

@@ -33,9 +33,8 @@ namespace ObjectOrientedPractics.Model
                 return _fullname;
             }
             set
-            {
-                var validator = new ValueValidator();
-                validator.AssertStringOnLength(value, 200, nameof(Fullname));
+            {             
+                ValueValidator.AssertStringOnLength(value, 200, nameof(Fullname));
                 _fullname = value;                
             }
         }
@@ -46,9 +45,8 @@ namespace ObjectOrientedPractics.Model
                 return _address;
             }
             set
-            {
-                var validator = new ValueValidator();
-                validator.AssertStringOnLength(value, 500, nameof(Address));
+            {                
+                ValueValidator.AssertStringOnLength(value, 500, nameof(Address));
                 _address = value;               
             }
         }

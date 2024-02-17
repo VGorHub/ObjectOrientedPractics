@@ -47,10 +47,17 @@ namespace ObjectOrientedPractics.View.Tabs
             this.SelectedItemsLabel = new System.Windows.Forms.Label();
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.ItemTab = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.GenerateButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.ItemTab.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -70,8 +77,9 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.RemoveButton);
-            this.panel4.Controls.Add(this.AddButton);
+            this.panel4.Controls.Add(this.panel6);
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Controls.Add(this.panel3);
             this.panel4.Location = new System.Drawing.Point(3, 534);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(333, 50);
@@ -79,11 +87,11 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             // RemoveButton
             // 
-            this.RemoveButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RemoveButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RemoveButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RemoveButton.Location = new System.Drawing.Point(233, 0);
+            this.RemoveButton.Location = new System.Drawing.Point(0, 0);
             this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(100, 50);
+            this.RemoveButton.Size = new System.Drawing.Size(104, 44);
             this.RemoveButton.TabIndex = 1;
             this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
@@ -91,11 +99,11 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             // AddButton
             // 
-            this.AddButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.AddButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AddButton.Location = new System.Drawing.Point(0, 0);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(100, 50);
+            this.AddButton.Size = new System.Drawing.Size(104, 44);
             this.AddButton.TabIndex = 0;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
@@ -291,6 +299,49 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ItemTab.Size = new System.Drawing.Size(835, 608);
             this.ItemTab.TabIndex = 10;
             // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel3.Controls.Add(this.AddButton);
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(104, 44);
+            this.panel3.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.Controls.Add(this.GenerateButton);
+            this.panel5.Location = new System.Drawing.Point(113, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(107, 44);
+            this.panel5.TabIndex = 1;
+            // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.Controls.Add(this.RemoveButton);
+            this.panel6.Location = new System.Drawing.Point(226, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(104, 44);
+            this.panel6.TabIndex = 2;
+            // 
+            // GenerateButton
+            // 
+            this.GenerateButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GenerateButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GenerateButton.Location = new System.Drawing.Point(0, 0);
+            this.GenerateButton.Name = "GenerateButton";
+            this.GenerateButton.Size = new System.Drawing.Size(107, 44);
+            this.GenerateButton.TabIndex = 0;
+            this.GenerateButton.Text = "Generate";
+            this.GenerateButton.UseVisualStyleBackColor = true;
+            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
+            // 
             // ItemsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,6 +357,9 @@ namespace ObjectOrientedPractics.View.Tabs
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ItemTab.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -330,5 +384,9 @@ namespace ObjectOrientedPractics.View.Tabs
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Panel ItemTab;
         private System.Windows.Forms.Label ErrorLabel;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button GenerateButton;
     }
 }

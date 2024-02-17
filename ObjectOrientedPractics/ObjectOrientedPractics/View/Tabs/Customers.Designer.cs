@@ -30,6 +30,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void InitializeComponent()
         {
             this.ItemTab = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.RemoveButton = new System.Windows.Forms.Button();
@@ -45,7 +46,7 @@ namespace ObjectOrientedPractics.View.Tabs
             this.IdLabel = new System.Windows.Forms.Label();
             this.SelectedCustomerLabel = new System.Windows.Forms.Label();
             this.AddressTextBox = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.GenerateButton = new System.Windows.Forms.Button();
             this.ItemTab.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -65,6 +66,16 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ItemTab.Size = new System.Drawing.Size(835, 608);
             this.ItemTab.TabIndex = 11;
             // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Location = new System.Drawing.Point(345, 277);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(481, 313);
+            this.panel3.TabIndex = 12;
+            this.panel3.Visible = false;
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -82,6 +93,7 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.GenerateButton);
             this.panel4.Controls.Add(this.RemoveButton);
             this.panel4.Controls.Add(this.AddButton);
             this.panel4.Location = new System.Drawing.Point(3, 534);
@@ -262,15 +274,17 @@ namespace ObjectOrientedPractics.View.Tabs
             this.AddressTextBox.TabIndex = 0;
             this.AddressTextBox.Leave += new System.EventHandler(this.AddressTextBox_Leave);
             // 
-            // panel3
+            // GenerateButton
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Location = new System.Drawing.Point(345, 277);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(481, 313);
-            this.panel3.TabIndex = 12;
-            this.panel3.Visible = false;
+            this.GenerateButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GenerateButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GenerateButton.Location = new System.Drawing.Point(100, 0);
+            this.GenerateButton.Name = "GenerateButton";
+            this.GenerateButton.Size = new System.Drawing.Size(133, 50);
+            this.GenerateButton.TabIndex = 2;
+            this.GenerateButton.Text = "Generate";
+            this.GenerateButton.UseVisualStyleBackColor = true;
+            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
             // 
             // Customers
             // 
@@ -308,5 +322,6 @@ namespace ObjectOrientedPractics.View.Tabs
         private System.Windows.Forms.Label IdLabel;
         private System.Windows.Forms.Label SelectedCustomerLabel;
         private System.Windows.Forms.TextBox AddressTextBox;
+        private System.Windows.Forms.Button GenerateButton;
     }
 }

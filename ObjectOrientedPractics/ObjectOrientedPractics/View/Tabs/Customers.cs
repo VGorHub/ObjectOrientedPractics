@@ -94,5 +94,12 @@ namespace ObjectOrientedPractics.View.Tabs
             _fullname = "";
             _address = "";
         }
+
+        private void GenerateButton_Click(object sender, EventArgs e)
+        {
+            Customer newCustomer = CustomerFactory.GenerateCustomer(_customers);
+            _customers.Add(newCustomer);
+            CustomersListBox.Items.Add(newCustomer.Fullname);
+        }
     }
 }

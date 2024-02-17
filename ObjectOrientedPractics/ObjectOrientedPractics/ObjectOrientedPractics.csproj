@@ -47,9 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Customer.cs" />
-    <Compile Include="Services\CustomerFactory.cs" />
+    <Compile Include="Model\CustomerFactory.cs" />
     <Compile Include="Model\Item.cs" />
-    <Compile Include="Services\ItemFactory.cs" />
+    <Compile Include="Model\ItemFactory.cs" />
     <Compile Include="Services\ValueValidator.cs" />
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
@@ -102,8 +102,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Data\" />
+    <Content Include="Data\Customers.txt" />
+    <Content Include="Data\Items.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
