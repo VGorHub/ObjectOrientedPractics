@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ObjectOrientedPractics",
+    "\\ObjectOrientedPractics\\ObjectOrientedPractics",
+    "\\ObjectOrientedPractics\\ObjectOrientedPractics\\Model",
+    "\\ObjectOrientedPractics\\ObjectOrientedPractics\\Services",
+    "\\ObjectOrientedPractics\\ObjectOrientedPractics\\View"
   ],
+  "SelectedNode": "\\ObjectOrientedPractics\\ObjectOrientedPractics.sln",
   "PreviewInSolutionExplorer": false
 }
