@@ -74,10 +74,6 @@ namespace ObjectOrientedPractics.Model
             Name = name;
             Info = info;
             Cost = cost;
-        }
-        public override string ToString()
-        {
-            return Name; // Возвращаем значение свойства Name
-        }
+        }        
     }
 }

@@ -32,18 +32,20 @@ namespace ObjectOrientedPractics.View.Tabs
                 if (float.TryParse(_cost, out floatValue))
                 {
                     try
-                    {
-                        Item newItem = new Item(_name, _info, floatValue);
+                    {                        
                         if (ItemsListBox.SelectedIndex != -1)
                         {
-                            int index = ItemsListBox.SelectedIndex;
-                            ItemsListBox.Items[index] = newItem;
-                            _items[index] = newItem;
+                            int index = ItemsListBox.SelectedIndex;                            
+                            _items[index].Name = _name;
+                            _items[index].Info = _info;
+                            _items[index].Cost = floatValue;
+                            ItemsListBox.Items[index] = _name;
                         }
                         else
                         {
+                            Item newItem = new Item(_name, _info, floatValue);
                             _items.Add(newItem);
-                            ItemsListBox.Items.Add(newItem);
+                            ItemsListBox.Items.Add(newItem.Name);                            
                             
                         }
                         ClearInputs();
@@ -93,17 +95,24 @@ namespace ObjectOrientedPractics.View.Tabs
             DescriptionTextBox.Text = "";
             CostTexBox.Text = "";
             ErrorLabel.Visible = false;
+            _name = "";
+            _info = "";
+            _cost = "";
         }
 
         private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ItemsListBox.SelectedIndex != -1)
             {
-                Item selectedItem = (Item)ItemsListBox.SelectedItem;
-                IdTextBox.Text = selectedItem.Id.ToString();
-                NameTextBox.Text = selectedItem.Name;
-                DescriptionTextBox.Text = selectedItem.Info;
-                CostTexBox.Text = selectedItem.Cost.ToString();
+                int index = ItemsListBox.SelectedIndex;
+                IdTextBox.Text = _items[index].Id.ToString();
+                NameTextBox.Text = _items[index].Name;
+                DescriptionTextBox.Text = _items[index].Info;
+                CostTexBox.Text = _items[index].Cost.ToString(); 
+                _name = NameTextBox.Text;
+                _info = DescriptionTextBox.Text;
+                _cost = CostTexBox.Text;
+                ErrorLabel.Visible = false;
             }
         }
 
@@ -113,10 +122,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (index != -1)
             {
                 _items.RemoveAt(index);
-                ItemsListBox.Items.RemoveAt(index);
-                _name = "";
-                _info = "";
-                _cost = "";
+                ItemsListBox.Items.RemoveAt(index);                
                 ClearInputs();
             }
             

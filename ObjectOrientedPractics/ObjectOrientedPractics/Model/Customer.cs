@@ -57,10 +57,6 @@ namespace ObjectOrientedPractics.Model
             Id = _counter;
             Fullname = fullname;
             Address = address;
-        }
-        public override string ToString()
-        {
-            return Fullname; // Возвращаем значение свойства Fullname
-        }
+        }        
     }
 }
