@@ -33,6 +33,7 @@ namespace ObjectOrientedPractics.View.Tabs
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.GenerateButton = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.CustomersLabel = new System.Windows.Forms.Label();
@@ -45,8 +46,18 @@ namespace ObjectOrientedPractics.View.Tabs
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.IdLabel = new System.Windows.Forms.Label();
             this.SelectedCustomerLabel = new System.Windows.Forms.Label();
-            this.AddressTextBox = new System.Windows.Forms.TextBox();
-            this.GenerateButton = new System.Windows.Forms.Button();
+            this.PostIndexTextBox = new System.Windows.Forms.TextBox();
+            this.PostIndexLabel = new System.Windows.Forms.Label();
+            this.CountryLabel = new System.Windows.Forms.Label();
+            this.StreetLabel = new System.Windows.Forms.Label();
+            this.BuildingLabel = new System.Windows.Forms.Label();
+            this.ApartmentLabel = new System.Windows.Forms.Label();
+            this.SityLabel = new System.Windows.Forms.Label();
+            this.CountryTextBox = new System.Windows.Forms.TextBox();
+            this.StreetTextBox = new System.Windows.Forms.TextBox();
+            this.BuildingTextBox = new System.Windows.Forms.TextBox();
+            this.ApartmentTextBox = new System.Windows.Forms.TextBox();
+            this.SityTextBox = new System.Windows.Forms.TextBox();
             this.ItemTab.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -70,9 +81,9 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Location = new System.Drawing.Point(345, 277);
+            this.panel3.Location = new System.Drawing.Point(345, 375);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(481, 313);
+            this.panel3.Size = new System.Drawing.Size(481, 215);
             this.panel3.TabIndex = 12;
             this.panel3.Visible = false;
             // 
@@ -100,6 +111,18 @@ namespace ObjectOrientedPractics.View.Tabs
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(333, 50);
             this.panel4.TabIndex = 2;
+            // 
+            // GenerateButton
+            // 
+            this.GenerateButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GenerateButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GenerateButton.Location = new System.Drawing.Point(100, 0);
+            this.GenerateButton.Name = "GenerateButton";
+            this.GenerateButton.Size = new System.Drawing.Size(133, 50);
+            this.GenerateButton.TabIndex = 2;
+            this.GenerateButton.Text = "Generate";
+            this.GenerateButton.UseVisualStyleBackColor = true;
+            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
             // 
             // RemoveButton
             // 
@@ -155,6 +178,18 @@ namespace ObjectOrientedPractics.View.Tabs
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.SityTextBox);
+            this.panel2.Controls.Add(this.ApartmentTextBox);
+            this.panel2.Controls.Add(this.BuildingTextBox);
+            this.panel2.Controls.Add(this.StreetTextBox);
+            this.panel2.Controls.Add(this.CountryTextBox);
+            this.panel2.Controls.Add(this.SityLabel);
+            this.panel2.Controls.Add(this.ApartmentLabel);
+            this.panel2.Controls.Add(this.BuildingLabel);
+            this.panel2.Controls.Add(this.StreetLabel);
+            this.panel2.Controls.Add(this.CountryLabel);
+            this.panel2.Controls.Add(this.PostIndexLabel);
+            this.panel2.Controls.Add(this.PostIndexTextBox);
             this.panel2.Controls.Add(this.ErrorLabel);
             this.panel2.Controls.Add(this.FullNameTexBox);
             this.panel2.Controls.Add(this.IdTextBox);
@@ -162,10 +197,9 @@ namespace ObjectOrientedPractics.View.Tabs
             this.panel2.Controls.Add(this.FullNameLabel);
             this.panel2.Controls.Add(this.IdLabel);
             this.panel2.Controls.Add(this.SelectedCustomerLabel);
-            this.panel2.Controls.Add(this.AddressTextBox);
             this.panel2.Location = new System.Drawing.Point(345, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(481, 268);
+            this.panel2.Size = new System.Drawing.Size(481, 366);
             this.panel2.TabIndex = 1;
             // 
             // ErrorLabel
@@ -216,9 +250,9 @@ namespace ObjectOrientedPractics.View.Tabs
             this.AddressLabel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.AddressLabel.Location = new System.Drawing.Point(4, 127);
             this.AddressLabel.Name = "AddressLabel";
-            this.AddressLabel.Size = new System.Drawing.Size(85, 24);
+            this.AddressLabel.Size = new System.Drawing.Size(157, 24);
             this.AddressLabel.TabIndex = 5;
-            this.AddressLabel.Text = "Address:";
+            this.AddressLabel.Text = "Delivery Address:";
             // 
             // FullNameLabel
             // 
@@ -261,30 +295,155 @@ namespace ObjectOrientedPractics.View.Tabs
             this.SelectedCustomerLabel.TabIndex = 2;
             this.SelectedCustomerLabel.Text = "Selected Customer";
             // 
-            // AddressTextBox
+            // PostIndexTextBox
             // 
-            this.AddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.PostIndexTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddressTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddressTextBox.Location = new System.Drawing.Point(8, 154);
-            this.AddressTextBox.Multiline = true;
-            this.AddressTextBox.Name = "AddressTextBox";
-            this.AddressTextBox.Size = new System.Drawing.Size(470, 103);
-            this.AddressTextBox.TabIndex = 0;
-            this.AddressTextBox.Leave += new System.EventHandler(this.AddressTextBox_Leave);
+            this.PostIndexTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PostIndexTextBox.Location = new System.Drawing.Point(112, 157);
+            this.PostIndexTextBox.Name = "PostIndexTextBox";
+            this.PostIndexTextBox.Size = new System.Drawing.Size(142, 29);
+            this.PostIndexTextBox.TabIndex = 11;
             // 
-            // GenerateButton
+            // PostIndexLabel
             // 
-            this.GenerateButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GenerateButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.GenerateButton.Location = new System.Drawing.Point(100, 0);
-            this.GenerateButton.Name = "GenerateButton";
-            this.GenerateButton.Size = new System.Drawing.Size(133, 50);
-            this.GenerateButton.TabIndex = 2;
-            this.GenerateButton.Text = "Generate";
-            this.GenerateButton.UseVisualStyleBackColor = true;
-            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
+            this.PostIndexLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PostIndexLabel.AutoSize = true;
+            this.PostIndexLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PostIndexLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.PostIndexLabel.Location = new System.Drawing.Point(4, 162);
+            this.PostIndexLabel.Name = "PostIndexLabel";
+            this.PostIndexLabel.Size = new System.Drawing.Size(103, 24);
+            this.PostIndexLabel.TabIndex = 12;
+            this.PostIndexLabel.Text = "Post Index:";
+            // 
+            // CountryLabel
+            // 
+            this.CountryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CountryLabel.AutoSize = true;
+            this.CountryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CountryLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.CountryLabel.Location = new System.Drawing.Point(4, 196);
+            this.CountryLabel.Name = "CountryLabel";
+            this.CountryLabel.Size = new System.Drawing.Size(80, 24);
+            this.CountryLabel.TabIndex = 13;
+            this.CountryLabel.Text = "Country:";
+            // 
+            // StreetLabel
+            // 
+            this.StreetLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.StreetLabel.AutoSize = true;
+            this.StreetLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.StreetLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.StreetLabel.Location = new System.Drawing.Point(3, 232);
+            this.StreetLabel.Name = "StreetLabel";
+            this.StreetLabel.Size = new System.Drawing.Size(63, 24);
+            this.StreetLabel.TabIndex = 14;
+            this.StreetLabel.Text = "Street:";
+            // 
+            // BuildingLabel
+            // 
+            this.BuildingLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BuildingLabel.AutoSize = true;
+            this.BuildingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BuildingLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BuildingLabel.Location = new System.Drawing.Point(4, 263);
+            this.BuildingLabel.Name = "BuildingLabel";
+            this.BuildingLabel.Size = new System.Drawing.Size(83, 24);
+            this.BuildingLabel.TabIndex = 15;
+            this.BuildingLabel.Text = "Building:";
+            // 
+            // ApartmentLabel
+            // 
+            this.ApartmentLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ApartmentLabel.AutoSize = true;
+            this.ApartmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ApartmentLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ApartmentLabel.Location = new System.Drawing.Point(275, 232);
+            this.ApartmentLabel.Name = "ApartmentLabel";
+            this.ApartmentLabel.Size = new System.Drawing.Size(101, 24);
+            this.ApartmentLabel.TabIndex = 16;
+            this.ApartmentLabel.Text = "Apartment:";
+            // 
+            // SityLabel
+            // 
+            this.SityLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SityLabel.AutoSize = true;
+            this.SityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SityLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.SityLabel.Location = new System.Drawing.Point(275, 197);
+            this.SityLabel.Name = "SityLabel";
+            this.SityLabel.Size = new System.Drawing.Size(44, 24);
+            this.SityLabel.TabIndex = 17;
+            this.SityLabel.Text = "Sity:";
+            // 
+            // CountryTextBox
+            // 
+            this.CountryTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CountryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CountryTextBox.Location = new System.Drawing.Point(112, 192);
+            this.CountryTextBox.Name = "CountryTextBox";
+            this.CountryTextBox.Size = new System.Drawing.Size(157, 29);
+            this.CountryTextBox.TabIndex = 18;
+            // 
+            // StreetTextBox
+            // 
+            this.StreetTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.StreetTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.StreetTextBox.Location = new System.Drawing.Point(112, 227);
+            this.StreetTextBox.Name = "StreetTextBox";
+            this.StreetTextBox.Size = new System.Drawing.Size(157, 29);
+            this.StreetTextBox.TabIndex = 19;
+            // 
+            // BuildingTextBox
+            // 
+            this.BuildingTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BuildingTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BuildingTextBox.Location = new System.Drawing.Point(112, 262);
+            this.BuildingTextBox.Name = "BuildingTextBox";
+            this.BuildingTextBox.Size = new System.Drawing.Size(157, 29);
+            this.BuildingTextBox.TabIndex = 20;
+            // 
+            // ApartmentTextBox
+            // 
+            this.ApartmentTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ApartmentTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ApartmentTextBox.Location = new System.Drawing.Point(382, 229);
+            this.ApartmentTextBox.Name = "ApartmentTextBox";
+            this.ApartmentTextBox.Size = new System.Drawing.Size(89, 29);
+            this.ApartmentTextBox.TabIndex = 21;
+            // 
+            // SityTextBox
+            // 
+            this.SityTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SityTextBox.Location = new System.Drawing.Point(325, 194);
+            this.SityTextBox.Name = "SityTextBox";
+            this.SityTextBox.Size = new System.Drawing.Size(146, 29);
+            this.SityTextBox.TabIndex = 22;
             // 
             // Customers
             // 
@@ -321,7 +480,18 @@ namespace ObjectOrientedPractics.View.Tabs
         private System.Windows.Forms.Label FullNameLabel;
         private System.Windows.Forms.Label IdLabel;
         private System.Windows.Forms.Label SelectedCustomerLabel;
-        private System.Windows.Forms.TextBox AddressTextBox;
         private System.Windows.Forms.Button GenerateButton;
+        private System.Windows.Forms.TextBox CountryTextBox;
+        private System.Windows.Forms.Label SityLabel;
+        private System.Windows.Forms.Label ApartmentLabel;
+        private System.Windows.Forms.Label BuildingLabel;
+        private System.Windows.Forms.Label StreetLabel;
+        private System.Windows.Forms.Label CountryLabel;
+        private System.Windows.Forms.Label PostIndexLabel;
+        private System.Windows.Forms.TextBox PostIndexTextBox;
+        private System.Windows.Forms.TextBox SityTextBox;
+        private System.Windows.Forms.TextBox ApartmentTextBox;
+        private System.Windows.Forms.TextBox BuildingTextBox;
+        private System.Windows.Forms.TextBox StreetTextBox;
     }
 }

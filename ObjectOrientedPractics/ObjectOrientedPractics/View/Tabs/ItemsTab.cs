@@ -128,16 +128,11 @@ namespace ObjectOrientedPractics.View.Tabs
             
         }
 
-        private void ItemsTab_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void GenerateButton_Click(object sender, EventArgs e)
         {
             Item newItem = ItemFactory.GenerateItem(_items);
             _items.Add(newItem);
-            ItemsListBox.Items.Add(newItem.Name);
+            ItemsListBox.Items.Add(newItem.Name);            
         }
     }
 }

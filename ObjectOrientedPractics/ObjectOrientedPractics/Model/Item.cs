@@ -67,11 +67,11 @@ namespace ObjectOrientedPractics.Model
                 _cost = value;
             }
         }
-        public Item(string name,string info,float cost){
-            Id = _counter;
+        public Item(string name,string info,float cost){            
             Name = name;
             Info = info;
             Cost = cost;
+            Id = _counter;
         }        
     }
 }
