@@ -13,7 +13,7 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class Customers : UserControl
     {
-        private int _id;
+        private List<Customer> _customers = new List<Customer>();
         private string _fullname;
         private string _address;
         public Customers()
@@ -25,15 +25,19 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             try
             {
-                Customer newCustomer = new Customer(_fullname, _address);
+                
                 if (CustomersListBox.SelectedIndex != -1)
                 {
                     int index = CustomersListBox.SelectedIndex;
-                    CustomersListBox.Items[index] = newCustomer;
+                    _customers[index].Fullname = _fullname;
+                    _customers[index].Address = _address;
+                    CustomersListBox.Items[index] = _fullname;
                 }
                 else
                 {
-                    CustomersListBox.Items.Add(newCustomer);
+                    Customer newCustomer = new Customer(_fullname, _address);
+                    _customers.Add(newCustomer);
+                    CustomersListBox.Items.Add(newCustomer.Fullname);
 
                 }
                 ClearInputs();
@@ -70,11 +74,14 @@ namespace ObjectOrientedPractics.View.Tabs
         private void CustomersListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (CustomersListBox.SelectedIndex != -1)
-            {
-                Customer selectedCustomer = (Customer)CustomersListBox.SelectedItem;
-                IdTextBox.Text = selectedCustomer.Id.ToString();
-                FullNameTexBox.Text = selectedCustomer.Fullname;
-                AddressTextBox.Text = selectedCustomer.Address;
+            {                
+                int index = CustomersListBox.SelectedIndex;
+                IdTextBox.Text = _customers[index].Id.ToString();
+                FullNameTexBox.Text = _customers[index].Fullname;
+                AddressTextBox.Text = _customers[index].Address;
+                _fullname = FullNameTexBox.Text;
+                _address = AddressTextBox.Text;
+                ErrorLabel.Visible = false;
             }
         }
 
@@ -84,6 +91,15 @@ namespace ObjectOrientedPractics.View.Tabs
             FullNameTexBox.Text = "";
             AddressTextBox.Text = "";            
             ErrorLabel.Visible = false;
+            _fullname = "";
+            _address = "";
+        }
+
+        private void GenerateButton_Click(object sender, EventArgs e)
+        {
+            Customer newCustomer = CustomerFactory.GenerateCustomer(_customers);
+            _customers.Add(newCustomer);
+            CustomersListBox.Items.Add(newCustomer.Fullname);
         }
     }
 }

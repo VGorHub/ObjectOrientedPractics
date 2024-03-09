@@ -8,7 +8,7 @@ namespace ObjectOrientedPractics.Services
 {
     class ValueValidator
     {
-        public void AssertStringOnLength(string value, int maxLength, string propertyName)
+        public static void AssertStringOnLength(string value, int maxLength, string propertyName)
         {
             if (value == null||value == "")
             {
