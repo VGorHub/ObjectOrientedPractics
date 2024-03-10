@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ObjectOrientedPractics.Services;
+using static ObjectOrientedPractics.Model.Category;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -14,6 +15,7 @@ namespace ObjectOrientedPractics.Model
         private string _info;
         private float _cost;
         private static int _counter = 0;
+        private Category _itemCategory;
 
         public int Id
         {
@@ -52,6 +54,8 @@ namespace ObjectOrientedPractics.Model
                 _info = value;
             }
         }
+
+        
         public float Cost
         {
             get
@@ -67,11 +71,23 @@ namespace ObjectOrientedPractics.Model
                 _cost = value;
             }
         }
-        public Item(string name,string info,float cost){            
+        public Category ItemCategory
+        {
+            get
+            {
+                return _itemCategory;
+            }
+            set
+            {
+                _itemCategory = value;
+            }
+        }
+        public Item(string name,string info,float cost,Category itemCategory){            
             Name = name;
             Info = info;
             Cost = cost;
             Id = _counter;
+            ItemCategory = itemCategory;            
         }        
     }
 }

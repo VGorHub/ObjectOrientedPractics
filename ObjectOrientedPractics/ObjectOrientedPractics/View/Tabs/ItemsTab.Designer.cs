@@ -40,6 +40,8 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ItemsLabel = new System.Windows.Forms.Label();
             this.ItemsListBox = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.CategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.CategoryLabel = new System.Windows.Forms.Label();
             this.ErrorLabel = new System.Windows.Forms.Label();
             this.CostTexBox = new System.Windows.Forms.TextBox();
             this.IdTextBox = new System.Windows.Forms.TextBox();
@@ -51,8 +53,6 @@ namespace ObjectOrientedPractics.View.Tabs
             this.SelectedItemsLabel = new System.Windows.Forms.Label();
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.ItemTab = new System.Windows.Forms.Panel();
-            this.CategoryLabel = new System.Windows.Forms.Label();
-            this.CategoryComboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -202,6 +202,31 @@ namespace ObjectOrientedPractics.View.Tabs
             this.panel2.Size = new System.Drawing.Size(481, 587);
             this.panel2.TabIndex = 1;
             // 
+            // CategoryComboBox
+            // 
+            this.CategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CategoryComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CategoryComboBox.FormattingEnabled = true;
+            this.CategoryComboBox.Location = new System.Drawing.Point(100, 119);
+            this.CategoryComboBox.Name = "CategoryComboBox";
+            this.CategoryComboBox.Size = new System.Drawing.Size(160, 32);
+            this.CategoryComboBox.TabIndex = 13;
+            this.CategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
+            // 
+            // CategoryLabel
+            // 
+            this.CategoryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CategoryLabel.AutoSize = true;
+            this.CategoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CategoryLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.CategoryLabel.Location = new System.Drawing.Point(4, 127);
+            this.CategoryLabel.Name = "CategoryLabel";
+            this.CategoryLabel.Size = new System.Drawing.Size(90, 24);
+            this.CategoryLabel.TabIndex = 11;
+            this.CategoryLabel.Text = "Category:";
+            // 
             // ErrorLabel
             // 
             this.ErrorLabel.AllowDrop = true;
@@ -227,7 +252,7 @@ namespace ObjectOrientedPractics.View.Tabs
             this.CostTexBox.Name = "CostTexBox";
             this.CostTexBox.Size = new System.Drawing.Size(160, 29);
             this.CostTexBox.TabIndex = 9;
-            this.CostTexBox.Leave += new System.EventHandler(this.CostTexBox_Leave);
+            this.CostTexBox.TextChanged += new System.EventHandler(this.CostTexBox_TextChanged);
             // 
             // IdTextBox
             // 
@@ -240,7 +265,6 @@ namespace ObjectOrientedPractics.View.Tabs
             this.IdTextBox.ReadOnly = true;
             this.IdTextBox.Size = new System.Drawing.Size(160, 29);
             this.IdTextBox.TabIndex = 8;
-            this.IdTextBox.Leave += new System.EventHandler(this.IdTextBox_Leave);
             // 
             // DescriptionTextBox
             // 
@@ -252,7 +276,7 @@ namespace ObjectOrientedPractics.View.Tabs
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.Size = new System.Drawing.Size(470, 150);
             this.DescriptionTextBox.TabIndex = 7;
-            this.DescriptionTextBox.Leave += new System.EventHandler(this.DescriptionTextBox_Leave);
+            this.DescriptionTextBox.TextChanged += new System.EventHandler(this.DescriptionTextBox_TextChanged);
             // 
             // DescriptionLabel
             // 
@@ -333,7 +357,7 @@ namespace ObjectOrientedPractics.View.Tabs
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(470, 103);
             this.NameTextBox.TabIndex = 0;
-            this.NameTextBox.Leave += new System.EventHandler(this.NameTextBox_Leave);
+            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
             // ItemTab
             // 
@@ -346,29 +370,6 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ItemTab.Name = "ItemTab";
             this.ItemTab.Size = new System.Drawing.Size(835, 608);
             this.ItemTab.TabIndex = 10;
-            // 
-            // CategoryLabel
-            // 
-            this.CategoryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CategoryLabel.AutoSize = true;
-            this.CategoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CategoryLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.CategoryLabel.Location = new System.Drawing.Point(4, 127);
-            this.CategoryLabel.Name = "CategoryLabel";
-            this.CategoryLabel.Size = new System.Drawing.Size(90, 24);
-            this.CategoryLabel.TabIndex = 11;
-            this.CategoryLabel.Text = "Category:";
-            // 
-            // CategoryComboBox
-            // 
-            this.CategoryComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CategoryComboBox.FormattingEnabled = true;
-            this.CategoryComboBox.Location = new System.Drawing.Point(100, 119);
-            this.CategoryComboBox.Name = "CategoryComboBox";
-            this.CategoryComboBox.Size = new System.Drawing.Size(160, 32);
-            this.CategoryComboBox.TabIndex = 13;
             // 
             // ItemsTab
             // 

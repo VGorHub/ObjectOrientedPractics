@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
-
+using static ObjectOrientedPractics.Model.Category;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -18,6 +18,7 @@ namespace ObjectOrientedPractics.Model
             string _name;
             string _info;
             float floatValue;
+            Category _itemCategory = Category.None;
 
             Random random = new Random();
 
@@ -36,9 +37,11 @@ namespace ObjectOrientedPractics.Model
                     _name = parts[1];
                     _info = parts[2];
 
+                    _itemCategory = ParseCategory(parts[3]);
+
                 } while (itemsList.Any(item => item.Name == _name));
 
-                Item newItem = new Item(_name, _info, floatValue);
+                Item newItem = new Item(_name, _info, floatValue, _itemCategory);
                 _generateCouter++;
                 return newItem;
             }
@@ -47,6 +50,17 @@ namespace ObjectOrientedPractics.Model
                 throw new Exception("Уникальные данные закончились");
             }
             
+        }
+        public static Category ParseCategory(string value)
+        {
+            if (Enum.TryParse(value, out Category category))
+            {
+                return category;
+            }
+            else
+            {                
+                return Category.None;
+            }
         }
     }
 }

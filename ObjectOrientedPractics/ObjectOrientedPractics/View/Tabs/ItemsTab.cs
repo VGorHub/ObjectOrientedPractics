@@ -16,12 +16,14 @@ namespace ObjectOrientedPractics.View.Tabs
         private List<Item> _items = new List<Item>();
         private string _name;
         private string _info;
-        private string _cost;        
+        private string _cost;
+        private Category _itemCategory;
 
 
         public ItemsTab()
         {
             InitializeComponent();
+            CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -39,11 +41,13 @@ namespace ObjectOrientedPractics.View.Tabs
                             _items[index].Name = _name;
                             _items[index].Info = _info;
                             _items[index].Cost = floatValue;
+                            _items[index].ItemCategory = _itemCategory;
                             ItemsListBox.Items[index] = _name;
+
                         }
                         else
                         {
-                            Item newItem = new Item(_name, _info, floatValue);
+                            Item newItem = new Item(_name, _info, floatValue , _itemCategory);
                             _items.Add(newItem);
                             ItemsListBox.Items.Add(newItem.Name);                            
                             
@@ -67,25 +71,19 @@ namespace ObjectOrientedPractics.View.Tabs
                 ErrorLabel.Visible = true;
             }
         }
-
-        private void NameTextBox_Leave(object sender, EventArgs e)
-        {      
-            _name = NameTextBox.Text;            
-        }
-
-        private void DescriptionTextBox_Leave(object sender, EventArgs e)
+        private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
-            _info = DescriptionTextBox.Text;           
+            _name = NameTextBox.Text;
         }
 
-        private void CostTexBox_Leave(object sender, EventArgs e)
+        private void DescriptionTextBox_TextChanged(object sender, EventArgs e)
+        {
+            _info = DescriptionTextBox.Text;
+        }
+        
+        private void CostTexBox_TextChanged(object sender, EventArgs e)
         {
             _cost = CostTexBox.Text;
-        }
-
-        private void IdTextBox_Leave(object sender, EventArgs e)
-        {
-
         }
 
         private void ClearInputs()
@@ -95,9 +93,11 @@ namespace ObjectOrientedPractics.View.Tabs
             DescriptionTextBox.Text = "";
             CostTexBox.Text = "";
             ErrorLabel.Visible = false;
+            CategoryComboBox.SelectedIndex = (int)Category.None;
             _name = "";
             _info = "";
             _cost = "";
+            _itemCategory = Category.None;
         }
 
         private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -108,10 +108,12 @@ namespace ObjectOrientedPractics.View.Tabs
                 IdTextBox.Text = _items[index].Id.ToString();
                 NameTextBox.Text = _items[index].Name;
                 DescriptionTextBox.Text = _items[index].Info;
-                CostTexBox.Text = _items[index].Cost.ToString(); 
+                CostTexBox.Text = _items[index].Cost.ToString();
+                CategoryComboBox.SelectedIndex = ((int)_items[index].ItemCategory);
                 _name = NameTextBox.Text;
                 _info = DescriptionTextBox.Text;
                 _cost = CostTexBox.Text;
+                _itemCategory = (Category)CategoryComboBox.SelectedItem;
                 ErrorLabel.Visible = false;
             }
         }
@@ -134,5 +136,15 @@ namespace ObjectOrientedPractics.View.Tabs
             _items.Add(newItem);
             ItemsListBox.Items.Add(newItem.Name);            
         }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CategoryComboBox.SelectedItem != null)
+            {
+                _itemCategory = (Category)CategoryComboBox.SelectedItem;
+            }                
+        }
+
+        
     }
 }

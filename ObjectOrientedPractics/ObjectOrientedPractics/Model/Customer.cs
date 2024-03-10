@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ObjectOrientedPractics.Services;
-
+using static ObjectOrientedPractics.Model.Address;
 namespace ObjectOrientedPractics.Model
 {
     class Customer
     {
         private int _id;
         private string _fullname;
-        private string _address;
+        private Address _address;
         private static int _counter = 0;
 
         public int Id
@@ -38,7 +38,7 @@ namespace ObjectOrientedPractics.Model
                 _fullname = value;                
             }
         }
-        public string Address
+        public Address Address
         {
             get
             {
@@ -46,11 +46,11 @@ namespace ObjectOrientedPractics.Model
             }
             set
             {                
-                ValueValidator.AssertStringOnLength(value, 500, nameof(Address));
+                
                 _address = value;               
             }
         }
-        public Customer(string fullname,string address)
+        public Customer(string fullname,Address address)
         {
             Id = _counter;
             Fullname = fullname;
