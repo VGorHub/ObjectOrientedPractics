@@ -12,7 +12,7 @@ namespace ObjectOrientedPractics.Model
     class CustomerFactory
     {
         private static int _generateCouter;
-        public static Customer GenerateCustomer(List<Customer> customersList)
+        public static Customers GenerateCustomer(List<Customers> customersList)
         {
             string _customerString;
             string _fullname;
@@ -43,7 +43,7 @@ namespace ObjectOrientedPractics.Model
 
                 } while (customersList.Any(item => item.Fullname == _fullname));
 
-                Customer newCustomer = new Customer(_fullname, _address);
+                Customers newCustomer = new Customers(_fullname, _address);
 
                 _generateCouter++;
                 return newCustomer;

@@ -12,12 +12,24 @@ using ObjectOrientedPractics.View.Control;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
-    public partial class Customers : UserControl
+    public partial class CustomersTab : UserControl
     {
-        private List<Customer> _customers = new List<Customer>();        
+        private List<Model.Customers> _customers ;        
         private string _fullname;        
         private Address _address ;
-        public Customers()
+        public List<Model.Customers> Customers
+        {
+            get
+            {
+                return _customers;
+            }
+            set
+            {
+                updateCustomerBox(value);
+                _customers = value;
+            }
+        }
+        public CustomersTab()
         {
             InitializeComponent();                    
         }        
@@ -36,7 +48,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 else
                 {
                     _address = addressControl1.GetAddress;
-                    Customer newCustomer = new Customer(_fullname, _address);
+                    Model.Customers newCustomer = new Model.Customers(_fullname, _address);
                     _customers.Add(newCustomer);                    
                     CustomersListBox.Items.Add(newCustomer.Fullname);
 
@@ -96,9 +108,21 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void GenerateButton_Click(object sender, EventArgs e)
         {
-            Customer newCustomer = CustomerFactory.GenerateCustomer(_customers);
+            Model.Customers newCustomer = CustomerFactory.GenerateCustomer(_customers);
             _customers.Add(newCustomer);            
             CustomersListBox.Items.Add(newCustomer.Fullname);
-        }        
+        }
+
+        private void updateCustomerBox(List<Model.Customers> newCustomers)
+        {
+            CustomersListBox.Items.Clear();
+            CustomersListBox.SelectedIndex = -1;
+            ClearInputs();
+            for (int i = 0; i < newCustomers.Count; i++)
+            {
+                CustomersListBox.Items.Add(newCustomers[i].Fullname);
+            }
+        }
+        
     }
 }

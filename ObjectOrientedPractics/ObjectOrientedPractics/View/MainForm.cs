@@ -9,28 +9,33 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractics.View.Tabs;
 using ObjectOrientedPractics.View.Control;
+using ObjectOrientedPractics.Model;
 
 namespace ObjectOrientedPractics
 {
     public partial class MainForm : Form
     {
+        private Store _store;
         public MainForm()
         {
             InitializeComponent();
+            _store = new Store();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
-            ItemsTab user1 = new ItemsTab();
-            Customers user2 = new Customers();
-            user1.Dock = DockStyle.Fill;
-            user2.Dock = DockStyle.Fill;
-            TabControl.TabPages[0].Controls.Add(user1);
-            TabControl.TabPages[1].Controls.Add(user2);
-            InitializeComponent();
 
+            ItemsTab itemsTab = new ItemsTab();
+            CustomersTab customersTab = new CustomersTab();
 
+            itemsTab.Items = _store.Items;
+            customersTab.Customers = _store.Customers;
+
+            itemsTab.Dock = DockStyle.Fill;
+            customersTab.Dock = DockStyle.Fill;
+
+            TabControl.TabPages[0].Controls.Add(itemsTab);
+            TabControl.TabPages[1].Controls.Add(customersTab);  
         }
     }
 }

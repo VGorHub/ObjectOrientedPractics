@@ -8,7 +8,7 @@ using static ObjectOrientedPractics.Model.Category;
 
 namespace ObjectOrientedPractics.Model
 {
-    class Item
+    public class Item
     {
         private int _id;
         private string _name;

@@ -48,10 +48,11 @@
   <ItemGroup>
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Category.cs" />
-    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\Customers.cs" />
     <Compile Include="Model\CustomerFactory.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\ItemFactory.cs" />
+    <Compile Include="Model\Store.cs" />
     <Compile Include="Services\ValueValidator.cs" />
     <Compile Include="View\Control\AddressControl.cs">
       <SubType>UserControl</SubType>
@@ -67,11 +68,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\Tabs\Customers.cs">
+    <Compile Include="View\Tabs\CustomersTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Tabs\Customers.Designer.cs">
-      <DependentUpon>Customers.cs</DependentUpon>
+    <Compile Include="View\Tabs\CustomersTab.Designer.cs">
+      <DependentUpon>CustomersTab.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Tabs\ItemsTab.cs">
       <SubType>UserControl</SubType>
@@ -94,8 +95,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\Tabs\Customers.resx">
-      <DependentUpon>Customers.cs</DependentUpon>
+    <EmbeddedResource Include="View\Tabs\CustomersTab.resx">
+      <DependentUpon>CustomersTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Tabs\ItemsTab.resx">
       <DependentUpon>ItemsTab.cs</DependentUpon>

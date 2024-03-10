@@ -13,16 +13,29 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class ItemsTab : UserControl
     {
-        private List<Item> _items = new List<Item>();
+
+        private List<Item> _items ;
         private string _name;
         private string _info;
         private string _cost;
         private Category _itemCategory;
 
-
+        public List<Item> Items 
+        { 
+            get 
+            {
+                return _items;
+            }
+            set 
+            {
+                updateListBox(value);
+                _items = value;                
+            } 
+        }
         public ItemsTab()
         {
             InitializeComponent();
+            Items = new List<Item>();
             CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
         }
 
@@ -93,7 +106,7 @@ namespace ObjectOrientedPractics.View.Tabs
             DescriptionTextBox.Text = "";
             CostTexBox.Text = "";
             ErrorLabel.Visible = false;
-            CategoryComboBox.SelectedIndex = (int)Category.None;
+            CategoryComboBox.SelectedIndex = -1;
             _name = "";
             _info = "";
             _cost = "";
@@ -145,6 +158,16 @@ namespace ObjectOrientedPractics.View.Tabs
             }                
         }
 
-        
+        private void updateListBox(List<Item> newitems)
+        {
+            ItemsListBox.Items.Clear();
+            ItemsListBox.SelectedIndex = -1;
+            ClearInputs();
+            for(int i = 0; i < newitems.Count; i++)
+            {
+                ItemsListBox.Items.Add(newitems[i].Name);
+            }
+        }
+
     }
 }

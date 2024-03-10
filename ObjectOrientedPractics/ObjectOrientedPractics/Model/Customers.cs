@@ -7,7 +7,7 @@ using ObjectOrientedPractics.Services;
 using static ObjectOrientedPractics.Model.Address;
 namespace ObjectOrientedPractics.Model
 {
-    class Customer
+    public class Customers
     {
         private int _id;
         private string _fullname;
@@ -50,7 +50,7 @@ namespace ObjectOrientedPractics.Model
                 _address = value;               
             }
         }
-        public Customer(string fullname,Address address)
+        public Customers(string fullname,Address address)
         {
             Id = _counter;
             Fullname = fullname;
