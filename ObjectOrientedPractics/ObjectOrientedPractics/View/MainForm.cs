@@ -20,11 +20,6 @@ namespace ObjectOrientedPractics
         {
             InitializeComponent();
             _store = new Store();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
             ItemsTab itemsTab = new ItemsTab();
             CustomersTab customersTab = new CustomersTab();
 
@@ -35,7 +30,13 @@ namespace ObjectOrientedPractics
             customersTab.Dock = DockStyle.Fill;
 
             TabControl.TabPages[0].Controls.Add(itemsTab);
-            TabControl.TabPages[1].Controls.Add(customersTab);  
+            TabControl.TabPages[1].Controls.Add(customersTab);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            
         }
     }
 }
