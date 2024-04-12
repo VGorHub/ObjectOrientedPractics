@@ -8,39 +8,53 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.View.Control;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
-    public partial class Customers : UserControl
+    public partial class CustomersTab : UserControl
     {
-        private List<Customer> _customers = new List<Customer>();
-        private string _fullname;
-        private string _address;
-        public Customers()
+        private List<Model.Customers> _customers ;        
+        private string _fullname;        
+        private Address _address ;
+        public List<Model.Customers> Customers
         {
-            InitializeComponent();
+            get
+            {
+                return _customers;
+            }
+            set
+            {
+                updateCustomerBox(value);
+                _customers = value;
+            }
         }
-
+        public CustomersTab()
+        {
+            InitializeComponent();                    
+        }        
         private void AddButton_Click(object sender, EventArgs e)
         {
             try
-            {
-                
+            {                
                 if (CustomersListBox.SelectedIndex != -1)
                 {
                     int index = CustomersListBox.SelectedIndex;
                     _customers[index].Fullname = _fullname;
+                    _address = addressControl1.GetAddress;
                     _customers[index].Address = _address;
                     CustomersListBox.Items[index] = _fullname;
                 }
                 else
                 {
-                    Customer newCustomer = new Customer(_fullname, _address);
-                    _customers.Add(newCustomer);
+                    _address = addressControl1.GetAddress;
+                    Model.Customers newCustomer = new Model.Customers(_fullname, _address);
+                    _customers.Add(newCustomer);                    
                     CustomersListBox.Items.Add(newCustomer.Fullname);
 
+
                 }
-                ClearInputs();
+                ClearInputs();                
                 CustomersListBox.SelectedIndex = -1;
             }
             catch(Exception ex)
@@ -56,15 +70,12 @@ namespace ObjectOrientedPractics.View.Tabs
             int index = CustomersListBox.SelectedIndex;
             if (index != -1)
             {
-                CustomersListBox.Items.RemoveAt(index);
+                _customers.RemoveAt(index);
+                CustomersListBox.Items.RemoveAt(index);                
                 ClearInputs();
             }
         }
-
-        private void AddressTextBox_Leave(object sender, EventArgs e)
-        {
-            _address = AddressTextBox.Text;
-        }
+               
 
         private void FullNameTexBox_Leave(object sender, EventArgs e)
         {
@@ -78,9 +89,10 @@ namespace ObjectOrientedPractics.View.Tabs
                 int index = CustomersListBox.SelectedIndex;
                 IdTextBox.Text = _customers[index].Id.ToString();
                 FullNameTexBox.Text = _customers[index].Fullname;
-                AddressTextBox.Text = _customers[index].Address;
+                addressControl1.SetAddress = _customers[index].Address;
                 _fullname = FullNameTexBox.Text;
-                _address = AddressTextBox.Text;
+
+                
                 ErrorLabel.Visible = false;
             }
         }
@@ -88,18 +100,29 @@ namespace ObjectOrientedPractics.View.Tabs
         private void ClearInputs()
         {
             IdTextBox.Text = "";
-            FullNameTexBox.Text = "";
-            AddressTextBox.Text = "";            
+            FullNameTexBox.Text = "";                      
             ErrorLabel.Visible = false;
             _fullname = "";
-            _address = "";
+            addressControl1.ClearTexBox();
         }
 
         private void GenerateButton_Click(object sender, EventArgs e)
         {
-            Customer newCustomer = CustomerFactory.GenerateCustomer(_customers);
-            _customers.Add(newCustomer);
+            Model.Customers newCustomer = CustomerFactory.GenerateCustomer(_customers);
+            _customers.Add(newCustomer);            
             CustomersListBox.Items.Add(newCustomer.Fullname);
         }
+
+        private void updateCustomerBox(List<Model.Customers> newCustomers)
+        {
+            CustomersListBox.Items.Clear();
+            CustomersListBox.SelectedIndex = -1;
+            ClearInputs();
+            for (int i = 0; i < newCustomers.Count; i++)
+            {
+                CustomersListBox.Items.Add(newCustomers[i].Fullname);
+            }
+        }
+        
     }
 }
