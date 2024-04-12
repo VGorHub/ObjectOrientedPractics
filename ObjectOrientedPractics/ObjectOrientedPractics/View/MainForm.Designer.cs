@@ -32,6 +32,7 @@ namespace ObjectOrientedPractics
             this.TabControl = new System.Windows.Forms.TabControl();
             this.ItemTabPage = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.CartsTabPage = new System.Windows.Forms.TabPage();
             this.TabControl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,6 +40,7 @@ namespace ObjectOrientedPractics
             // 
             this.TabControl.Controls.Add(this.ItemTabPage);
             this.TabControl.Controls.Add(this.tabPage2);
+            this.TabControl.Controls.Add(this.CartsTabPage);
             this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl.Location = new System.Drawing.Point(0, 0);
             this.TabControl.Name = "TabControl";
@@ -67,6 +69,15 @@ namespace ObjectOrientedPractics
             this.tabPage2.Text = "Customers";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // CartsTabPage
+            // 
+            this.CartsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.CartsTabPage.Name = "CartsTabPage";
+            this.CartsTabPage.Size = new System.Drawing.Size(1042, 616);
+            this.CartsTabPage.TabIndex = 2;
+            this.CartsTabPage.Text = "Carts";
+            this.CartsTabPage.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -87,6 +98,7 @@ namespace ObjectOrientedPractics
         private System.Windows.Forms.TabControl TabControl;
         private System.Windows.Forms.TabPage ItemTabPage;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage CartsTabPage;
     }
 }
 
