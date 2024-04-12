@@ -16,7 +16,21 @@ namespace ObjectOrientedPractics.Model
         private Address _deliveryAddress;
         private double _totalPrice;
         OrderStatus _orderStatus = 0;
+        private readonly string _fullname;
 
+        public OrderStatus OrderStatus
+        {
+            get { return _orderStatus; }
+            set { _orderStatus = value; }
+        }
+        public double TotalPrice
+        {
+            get { return _totalPrice; }
+        }
+        public string Fullname
+        {
+            get { return _fullname; }
+        }
         public int Id
         {
             get
@@ -58,12 +72,13 @@ namespace ObjectOrientedPractics.Model
             }
         }
         
-        public Order(DateTime creationDate, Address deliveryAddress, Cart cart)
+        public Order(DateTime creationDate, Address deliveryAddress, Cart cart, string fullname)
         {
             Id = _counter;
             _creationDate = creationDate;
             DeliveryAddress = deliveryAddress;
-            Cart = cart; 
+            Cart = cart;
+            _fullname = fullname;
         }        
     }
 }

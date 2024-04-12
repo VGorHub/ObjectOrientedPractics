@@ -23,20 +23,24 @@ namespace ObjectOrientedPractics
             ItemsTab itemsTab = new ItemsTab();
             CustomersTab customersTab = new CustomersTab();
             CartsTab cartsTab = new CartsTab();
+            OrdersTab ordersTab = new OrdersTab();
 
             itemsTab.Items = _store.Items;
             customersTab.Customers = _store.Customers;
             cartsTab.Customers = _store.Customers;
             cartsTab.Items = _store.Items;
+            ordersTab.Customers = _store.Customers;
 
 
             itemsTab.Dock = DockStyle.Fill;
             customersTab.Dock = DockStyle.Fill;
             cartsTab.Dock = DockStyle.Fill;
+            ordersTab.Dock = DockStyle.Fill;
 
             TabControl.TabPages[0].Controls.Add(itemsTab);
             TabControl.TabPages[1].Controls.Add(customersTab);
             TabControl.TabPages[2].Controls.Add(cartsTab);
+            TabControl.TabPages[3].Controls.Add(ordersTab);
         }
 
         private void Form1_Load(object sender, EventArgs e)

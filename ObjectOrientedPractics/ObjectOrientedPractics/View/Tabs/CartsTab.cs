@@ -134,13 +134,18 @@ namespace ObjectOrientedPractics.View.Tabs
             }
             else
             {
-                if(CurrentCustomer.Cart.Items.Count == null)
+                if(listBox_Cart.Items.Count == 0)
                 {
 
                 }
                 else
                 {
-                    Order newOrder = new Order(DateTime.Now, CurrentCustomer.Address, CurrentCustomer.Cart);
+                    Cart cart = new Cart();
+                    foreach(var item in CurrentCustomer.Cart.Items)
+                    {
+                        cart.Items.Add(item);
+                    }
+                    Order newOrder = new Order(DateTime.Now, CurrentCustomer.Address, cart, CurrentCustomer.Fullname);
                     CurrentCustomer.Orders.Add(newOrder);
                     listBox_Cart.Items.Clear();
                     CurrentCustomer.Cart.Items.Clear();
