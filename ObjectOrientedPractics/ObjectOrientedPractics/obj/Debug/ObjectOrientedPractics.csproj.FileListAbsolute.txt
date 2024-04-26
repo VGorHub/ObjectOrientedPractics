@@ -11,3 +11,5 @@ D:\Programming\ObjectOrientedPractics\ObjectOrientedPractics\ObjectOrientedPract
 D:\Programming\ObjectOrientedPractics\ObjectOrientedPractics\ObjectOrientedPractics\obj\Debug\ObjectOrientedPractics.pdb
 D:\Programming\ObjectOrientedPractics\ObjectOrientedPractics\ObjectOrientedPractics\obj\Debug\ObjectOrientedPractics.View.Control.AddressControl.resources
 D:\Programming\ObjectOrientedPractics\ObjectOrientedPractics\ObjectOrientedPractics\obj\Debug\ObjectOrientedPractics.View.Tabs.CustomersTab.resources
+D:\Programming\ObjectOrientedPractics\ObjectOrientedPractics\ObjectOrientedPractics\obj\Debug\ObjectOrientedPractics.View.Tabs.CartsTab.resources
+D:\Programming\ObjectOrientedPractics\ObjectOrientedPractics\ObjectOrientedPractics\obj\Debug\ObjectOrientedPractics.View.Tabs.OrdersTab.resources
