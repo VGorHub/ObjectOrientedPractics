@@ -19,6 +19,9 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private List<Order> _orders = new List<Order>();
 
+        Order _selectedOrder;
+        PriorityOrder _selectedPriorityOrder;
+
         public List<Customers> Customers { get { return _customers; } set { _customers = value; } }
         public OrdersTab()
         {
@@ -79,6 +82,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (_orders.Count - 1 >= dataGridView1.CurrentCell.RowIndex)
             {
                 int index = dataGridView1.CurrentCell.RowIndex;
+                _selectedOrder = _orders[index];
                 textBox_ID.Text = _orders[index].Id.ToString();
                 comboBox_Status.Text = _orders[index].OrderStatus.ToString();
                 textBoxCreated.Text = _orders[index].CreationDate.ToString();
@@ -89,6 +93,19 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
 
                     listBox_Cart.Items.Add(_orders[index].Cart.Items[i].Name + " price:" + _orders[index].Cart.Items[i].Cost.ToString() + "RUB");
+                }
+                if (_orders[index].GetType() == typeof(PriorityOrder))
+                {                    
+                    panel_Priority.Visible = true;
+                    _selectedPriorityOrder = _orders[index] as PriorityOrder;
+                    _selectedOrder = _selectedPriorityOrder;
+                    comboBox_DeliveryTime.SelectedIndex = (int)_selectedPriorityOrder.WishTime;
+                }
+                else
+                {
+                    _selectedPriorityOrder = null;
+                    comboBox_DeliveryTime.SelectedIndex = 0;
+                    panel_Priority.Visible = false;
                 }
             }
 
@@ -105,7 +122,18 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void OrdersTab_Enter(object sender, EventArgs e)
         {
+            
+
             InitializeDataGridView1();
+        }
+
+        private void comboBox_DeliveryTime_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(_selectedPriorityOrder != null) 
+            { 
+                _selectedPriorityOrder.WishTime = (WishTimeEnum)comboBox_DeliveryTime.SelectedIndex;
+                _orders[dataGridView1.CurrentCell.RowIndex] = _selectedPriorityOrder;
+            }
         }
     }
 }

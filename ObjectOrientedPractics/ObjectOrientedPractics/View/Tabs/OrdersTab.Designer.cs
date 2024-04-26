@@ -50,13 +50,19 @@
             this.grid_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grid_date_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grid_amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel_Priority = new System.Windows.Forms.Panel();
+            this.label_PriorityOptions = new System.Windows.Forms.Label();
+            this.comboBox_DeliveryTime = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel_Priority.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel_Priority);
             this.panel1.Controls.Add(this.comboBox_Status);
             this.panel1.Controls.Add(this.textBoxCreated);
             this.panel1.Controls.Add(this.textBox_ID);
@@ -255,6 +261,52 @@
             this.grid_amount.Name = "grid_amount";
             this.grid_amount.ReadOnly = true;
             // 
+            // panel_Priority
+            // 
+            this.panel_Priority.Controls.Add(this.label_PriorityOptions);
+            this.panel_Priority.Controls.Add(this.comboBox_DeliveryTime);
+            this.panel_Priority.Controls.Add(this.label8);
+            this.panel_Priority.Location = new System.Drawing.Point(576, 5);
+            this.panel_Priority.Name = "panel_Priority";
+            this.panel_Priority.Size = new System.Drawing.Size(287, 89);
+            this.panel_Priority.TabIndex = 35;
+            this.panel_Priority.Visible = false;
+            // 
+            // label_PriorityOptions
+            // 
+            this.label_PriorityOptions.AutoSize = true;
+            this.label_PriorityOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_PriorityOptions.Location = new System.Drawing.Point(48, 0);
+            this.label_PriorityOptions.Name = "label_PriorityOptions";
+            this.label_PriorityOptions.Size = new System.Drawing.Size(93, 13);
+            this.label_PriorityOptions.TabIndex = 35;
+            this.label_PriorityOptions.Text = "Priority Options";
+            // 
+            // comboBox_DeliveryTime
+            // 
+            this.comboBox_DeliveryTime.FormattingEnabled = true;
+            this.comboBox_DeliveryTime.Items.AddRange(new object[] {
+            "9:00 – 11:00",
+            "11:00 – 13:00",
+            "13:00 – 15:00",
+            "15:00 – 17:00",
+            "17:00 – 19:00",
+            "19:00 – 21:00"});
+            this.comboBox_DeliveryTime.Location = new System.Drawing.Point(128, 22);
+            this.comboBox_DeliveryTime.Name = "comboBox_DeliveryTime";
+            this.comboBox_DeliveryTime.Size = new System.Drawing.Size(100, 21);
+            this.comboBox_DeliveryTime.TabIndex = 37;
+            this.comboBox_DeliveryTime.SelectedIndexChanged += new System.EventHandler(this.comboBox_DeliveryTime_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(48, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(74, 13);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "Delivery Time:";
+            // 
             // OrdersTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,6 +320,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel_Priority.ResumeLayout(false);
+            this.panel_Priority.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -296,5 +350,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn grid_address;
         private System.Windows.Forms.DataGridViewTextBoxColumn grid_date_order;
         private System.Windows.Forms.DataGridViewTextBoxColumn grid_amount;
+        private System.Windows.Forms.Panel panel_Priority;
+        private System.Windows.Forms.Label label_PriorityOptions;
+        private System.Windows.Forms.ComboBox comboBox_DeliveryTime;
+        private System.Windows.Forms.Label label8;
     }
 }
