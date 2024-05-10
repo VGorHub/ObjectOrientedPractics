@@ -74,5 +74,13 @@ namespace ObjectOrientedPractics.Model.Discounts
         {            
             SetPointsCount = 0;
         }
+        public int CompareTo(PointsDiscount other)
+        {
+            if (other == null)
+                return 1;
+
+            return this.PointsCount.CompareTo(other.PointsCount);
+        }
+
     }
 }

@@ -38,7 +38,36 @@ namespace ObjectOrientedPractics.Model
                 return _amount;
             }
         }
+        // Реализация ICloneable вместо конструктора копирования
+        public object Clone()
+        {
+            return new Cart();
+        }
+        public bool Equals(Cart other)
+        {
+            if (other == null)
+                return false;
 
+            // Сравниваем количество товаров в корзине
+            if (this._items.Count != other._items.Count)
+                return false;
+
+            // Сравниваем каждый товар в корзине
+            for (int i = 0; i < _items.Count; i++)
+            {
+                if (!this._items[i].Equals(other._items[i]))
+                    return false;
+            }
+
+            return true;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+
+            return Equals(obj as Cart);
+        }
 
     }
 }
