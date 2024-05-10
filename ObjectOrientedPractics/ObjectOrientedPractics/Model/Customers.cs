@@ -1,10 +1,10 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using ObjectOrientedPractics.Services;
-using static ObjectOrientedPractics.Model.Address;
+using ObjectOrientedPractics.Model.Orders;
+using ObjectOrientedPractics.Model.Discounts;
+
 namespace ObjectOrientedPractics.Model
 {
     public class Customers
@@ -15,6 +15,14 @@ namespace ObjectOrientedPractics.Model
         private static int _counter = 0;
         private Cart _cart;
         private List<Order> _orders;
+        private List<IDiscount> _discounts;
+
+        public List<IDiscount> Discounts
+        {
+            get { return _discounts; }
+
+            set { _discounts = value; }
+        }
         public bool IsPriority { get; set; }
 
         public int Id
@@ -84,6 +92,7 @@ namespace ObjectOrientedPractics.Model
             Cart = new Cart();
             Orders = new List<Order>();
             IsPriority = false;
+            Discounts.Add(new PointsDiscount());
         }        
     }
 }

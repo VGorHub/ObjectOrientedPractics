@@ -1,6 +1,7 @@
 ﻿using System;
+using ObjectOrientedPractics.Model.Enums;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Orders
 {
     public class PriorityOrder : Order
     {
