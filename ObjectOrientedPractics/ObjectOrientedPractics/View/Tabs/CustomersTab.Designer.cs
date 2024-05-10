@@ -30,6 +30,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void InitializeComponent()
         {
             this.ItemTab = new System.Windows.Forms.Panel();
+            this.addressControlPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.GenerateButton = new System.Windows.Forms.Button();
@@ -44,13 +45,13 @@ namespace ObjectOrientedPractics.View.Tabs
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.IdLabel = new System.Windows.Forms.Label();
             this.SelectedCustomerLabel = new System.Windows.Forms.Label();
-            this.addressControlPanel = new System.Windows.Forms.Panel();
+            this.checkBox_IsPriority = new System.Windows.Forms.CheckBox();
             this.addressControl1 = new ObjectOrientedPractics.View.Control.AddressControl();
             this.ItemTab.SuspendLayout();
+            this.addressControlPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.addressControlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ItemTab
@@ -65,6 +66,16 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ItemTab.Name = "ItemTab";
             this.ItemTab.Size = new System.Drawing.Size(835, 608);
             this.ItemTab.TabIndex = 11;
+            // 
+            // addressControlPanel
+            // 
+            this.addressControlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.addressControlPanel.Controls.Add(this.addressControl1);
+            this.addressControlPanel.Location = new System.Drawing.Point(345, 156);
+            this.addressControlPanel.Name = "addressControlPanel";
+            this.addressControlPanel.Size = new System.Drawing.Size(481, 215);
+            this.addressControlPanel.TabIndex = 12;
             // 
             // panel1
             // 
@@ -157,6 +168,7 @@ namespace ObjectOrientedPractics.View.Tabs
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.checkBox_IsPriority);
             this.panel2.Controls.Add(this.ErrorLabel);
             this.panel2.Controls.Add(this.FullNameTexBox);
             this.panel2.Controls.Add(this.IdTextBox);
@@ -165,7 +177,7 @@ namespace ObjectOrientedPractics.View.Tabs
             this.panel2.Controls.Add(this.SelectedCustomerLabel);
             this.panel2.Location = new System.Drawing.Point(345, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(481, 118);
+            this.panel2.Size = new System.Drawing.Size(481, 147);
             this.panel2.TabIndex = 1;
             // 
             // ErrorLabel
@@ -247,15 +259,16 @@ namespace ObjectOrientedPractics.View.Tabs
             this.SelectedCustomerLabel.TabIndex = 2;
             this.SelectedCustomerLabel.Text = "Selected Customer";
             // 
-            // addressControlPanel
+            // checkBox_IsPriority
             // 
-            this.addressControlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.addressControlPanel.Controls.Add(this.addressControl1);
-            this.addressControlPanel.Location = new System.Drawing.Point(345, 127);
-            this.addressControlPanel.Name = "addressControlPanel";
-            this.addressControlPanel.Size = new System.Drawing.Size(481, 215);
-            this.addressControlPanel.TabIndex = 12;
+            this.checkBox_IsPriority.AutoSize = true;
+            this.checkBox_IsPriority.Location = new System.Drawing.Point(8, 114);
+            this.checkBox_IsPriority.Name = "checkBox_IsPriority";
+            this.checkBox_IsPriority.Size = new System.Drawing.Size(68, 17);
+            this.checkBox_IsPriority.TabIndex = 11;
+            this.checkBox_IsPriority.Text = "Is Priority";
+            this.checkBox_IsPriority.UseVisualStyleBackColor = true;
+            this.checkBox_IsPriority.CheckedChanged += new System.EventHandler(this.checkBox_IsPriority_CheckedChanged);
             // 
             // addressControl1
             // 
@@ -264,20 +277,20 @@ namespace ObjectOrientedPractics.View.Tabs
             this.addressControl1.Size = new System.Drawing.Size(475, 203);
             this.addressControl1.TabIndex = 13;
             // 
-            // Customers
+            // CustomersTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ItemTab);
-            this.Name = "Customers";
+            this.Name = "CustomersTab";
             this.Size = new System.Drawing.Size(841, 619);
             this.ItemTab.ResumeLayout(false);
+            this.addressControlPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.addressControlPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -301,5 +314,6 @@ namespace ObjectOrientedPractics.View.Tabs
         private System.Windows.Forms.Button GenerateButton;
         private System.Windows.Forms.Panel addressControlPanel;
         private Control.AddressControl addressControl1;
+        private System.Windows.Forms.CheckBox checkBox_IsPriority;
     }
 }

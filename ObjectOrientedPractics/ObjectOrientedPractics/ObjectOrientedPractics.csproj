@@ -47,12 +47,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\Cart.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Customers.cs" />
     <Compile Include="Model\CustomerFactory.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\ItemFactory.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\OrderStatus.cs" />
+    <Compile Include="Model\PriorityOrder.cs" />
     <Compile Include="Model\Store.cs" />
+    <Compile Include="Model\WishTimeEnum.cs" />
     <Compile Include="Services\ValueValidator.cs" />
     <Compile Include="View\Control\AddressControl.cs">
       <SubType>UserControl</SubType>
@@ -68,6 +73,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Tabs\CartsTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Tabs\CartsTab.Designer.cs">
+      <DependentUpon>CartsTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Tabs\CustomersTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -79,6 +90,18 @@
     </Compile>
     <Compile Include="View\Tabs\ItemsTab.Designer.cs">
       <DependentUpon>ItemsTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\OrdersTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Tabs\OrdersTab.Designer.cs">
+      <DependentUpon>OrdersTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\PriorityOrdersTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Tabs\PriorityOrdersTab.Designer.cs">
+      <DependentUpon>PriorityOrdersTab.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="View\Control\AddressControl.resx">
       <DependentUpon>AddressControl.cs</DependentUpon>
@@ -95,11 +118,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Tabs\CartsTab.resx">
+      <DependentUpon>CartsTab.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Tabs\CustomersTab.resx">
       <DependentUpon>CustomersTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Tabs\ItemsTab.resx">
       <DependentUpon>ItemsTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Tabs\OrdersTab.resx">
+      <DependentUpon>OrdersTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Tabs\PriorityOrdersTab.resx">
+      <DependentUpon>PriorityOrdersTab.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

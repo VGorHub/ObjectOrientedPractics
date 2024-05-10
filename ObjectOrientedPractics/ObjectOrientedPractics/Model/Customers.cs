@@ -13,6 +13,9 @@ namespace ObjectOrientedPractics.Model
         private string _fullname;
         private Address _address;
         private static int _counter = 0;
+        private Cart _cart;
+        private List<Order> _orders;
+        public bool IsPriority { get; set; }
 
         public int Id
         {
@@ -50,11 +53,37 @@ namespace ObjectOrientedPractics.Model
                 _address = value;               
             }
         }
+        public Cart Cart
+        {
+            get 
+            {
+                return _cart;
+            } 
+            set 
+            { 
+                _cart = value;
+            }
+        }
+
+        public List<Order> Orders
+        {
+            get
+            {
+                return _orders;
+            }
+            set
+            {
+                _orders = value;
+            }
+        }
         public Customers(string fullname,Address address)
         {
             Id = _counter;
             Fullname = fullname;
             Address = address;
+            Cart = new Cart();
+            Orders = new List<Order>();
+            IsPriority = false;
         }        
     }
 }

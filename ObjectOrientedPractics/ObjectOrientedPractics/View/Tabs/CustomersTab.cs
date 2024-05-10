@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -49,6 +50,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     _address = addressControl1.GetAddress;
                     Model.Customers newCustomer = new Model.Customers(_fullname, _address);
+                    newCustomer.IsPriority = checkBox_IsPriority.Checked;
                     _customers.Add(newCustomer);                    
                     CustomersListBox.Items.Add(newCustomer.Fullname);
 
@@ -91,8 +93,9 @@ namespace ObjectOrientedPractics.View.Tabs
                 FullNameTexBox.Text = _customers[index].Fullname;
                 addressControl1.SetAddress = _customers[index].Address;
                 _fullname = FullNameTexBox.Text;
+                checkBox_IsPriority.Checked = _customers[index].IsPriority;
 
-                
+
                 ErrorLabel.Visible = false;
             }
         }
@@ -123,6 +126,13 @@ namespace ObjectOrientedPractics.View.Tabs
                 CustomersListBox.Items.Add(newCustomers[i].Fullname);
             }
         }
-        
+
+        private void checkBox_IsPriority_CheckedChanged(object sender, EventArgs e)
+        {
+            if(CustomersListBox.SelectedIndex != -1)
+            {
+                _customers[CustomersListBox.SelectedIndex].IsPriority= checkBox_IsPriority.Checked;
+            }
+        }
     }
 }
