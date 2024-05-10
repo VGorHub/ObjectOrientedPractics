@@ -4,7 +4,7 @@ using ObjectOrientedPractics.Model.Enums;
 
 namespace ObjectOrientedPractics.Model.Discounts
 {
-    internal class PercentDiscount : IDiscount
+    internal class PercentDiscount : IDiscount 
     {
         
         private double _discount;
@@ -84,5 +84,14 @@ namespace ObjectOrientedPractics.Model.Discounts
             Category = category;
             SpentInCategory = 0;            
         }
+
+        public int CompareTo(PercentDiscount other)
+        {
+            if (other == null)
+                return 1;
+
+            return this.Discount.CompareTo(other.Discount);
+        }
+
     }
 }

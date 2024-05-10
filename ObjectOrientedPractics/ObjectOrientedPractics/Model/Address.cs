@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.Model
@@ -117,5 +119,31 @@ namespace ObjectOrientedPractics.Model
             Building = building;
             Apartment = apartament;
         }
+        // Реализация ICloneable вместо конструктора копирования
+        public object Clone()
+        {
+            return new Address(this.Index, this.Country, this.City, this.Street, this.Building, this.Apartment);
+        }
+
+        public bool Equals(Address other)
+        {
+            if (other == null)
+                return false;
+
+            return this.Index == other.Index &&
+                   this.Country == other.Country &&
+                   this.City == other.City &&
+                   this.Street == other.Street &&
+                   this.Building == other.Building &&
+                   this.Apartment == other.Apartment;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+
+            return Equals(obj as Address);
+        }
+
     }
 }

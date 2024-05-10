@@ -84,6 +84,28 @@ namespace ObjectOrientedPractics.Model
             Cost = cost;
             Id = _counter;
             ItemCategory = itemCategory;            
-        }        
+        }
+        // Реализация ICloneable вместо конструктора копирования
+        public object Clone()
+        {
+            return new Item(this.Name, this.Info,this.Cost,this.ItemCategory);
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            if (obj.GetType() != this.GetType()) return false;
+            if (object.ReferenceEquals(this, obj)) return true;
+
+            Item other = (Item)obj;
+            return this.Id == other.Id;
+        }
+        public int CompareTo(Item other)
+        {
+            if (other == null)
+                return 1;
+
+            return this.Cost.CompareTo(other.Cost);
+        }
+
     }
 }
