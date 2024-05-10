@@ -39,19 +39,25 @@ namespace ObjectOrientedPractics.View.Tabs
             this.CustomersLabel = new System.Windows.Forms.Label();
             this.CustomersListBox = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.checkBox_IsPriority = new System.Windows.Forms.CheckBox();
             this.ErrorLabel = new System.Windows.Forms.Label();
             this.FullNameTexBox = new System.Windows.Forms.TextBox();
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.IdLabel = new System.Windows.Forms.Label();
             this.SelectedCustomerLabel = new System.Windows.Forms.Label();
-            this.checkBox_IsPriority = new System.Windows.Forms.CheckBox();
-            this.addressControl1 = new ObjectOrientedPractics.View.Control.AddressControl();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.discountListBox = new System.Windows.Forms.ListBox();
+            this.discountAddButton = new System.Windows.Forms.Button();
+            this.removeDiscountButton = new System.Windows.Forms.Button();
+            this.addressControl2 = new ObjectOrientedPractics.View.Control.AddressControl();
             this.ItemTab.SuspendLayout();
             this.addressControlPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // ItemTab
@@ -59,6 +65,7 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ItemTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ItemTab.Controls.Add(this.panel3);
             this.ItemTab.Controls.Add(this.addressControlPanel);
             this.ItemTab.Controls.Add(this.panel1);
             this.ItemTab.Controls.Add(this.panel2);
@@ -71,7 +78,7 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             this.addressControlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.addressControlPanel.Controls.Add(this.addressControl1);
+            this.addressControlPanel.Controls.Add(this.addressControl2);
             this.addressControlPanel.Location = new System.Drawing.Point(345, 156);
             this.addressControlPanel.Name = "addressControlPanel";
             this.addressControlPanel.Size = new System.Drawing.Size(481, 215);
@@ -180,6 +187,17 @@ namespace ObjectOrientedPractics.View.Tabs
             this.panel2.Size = new System.Drawing.Size(481, 147);
             this.panel2.TabIndex = 1;
             // 
+            // checkBox_IsPriority
+            // 
+            this.checkBox_IsPriority.AutoSize = true;
+            this.checkBox_IsPriority.Location = new System.Drawing.Point(8, 114);
+            this.checkBox_IsPriority.Name = "checkBox_IsPriority";
+            this.checkBox_IsPriority.Size = new System.Drawing.Size(68, 17);
+            this.checkBox_IsPriority.TabIndex = 11;
+            this.checkBox_IsPriority.Text = "Is Priority";
+            this.checkBox_IsPriority.UseVisualStyleBackColor = true;
+            this.checkBox_IsPriority.CheckedChanged += new System.EventHandler(this.checkBox_IsPriority_CheckedChanged);
+            // 
             // ErrorLabel
             // 
             this.ErrorLabel.AllowDrop = true;
@@ -259,23 +277,66 @@ namespace ObjectOrientedPractics.View.Tabs
             this.SelectedCustomerLabel.TabIndex = 2;
             this.SelectedCustomerLabel.Text = "Selected Customer";
             // 
-            // checkBox_IsPriority
+            // panel3
             // 
-            this.checkBox_IsPriority.AutoSize = true;
-            this.checkBox_IsPriority.Location = new System.Drawing.Point(8, 114);
-            this.checkBox_IsPriority.Name = "checkBox_IsPriority";
-            this.checkBox_IsPriority.Size = new System.Drawing.Size(68, 17);
-            this.checkBox_IsPriority.TabIndex = 11;
-            this.checkBox_IsPriority.Text = "Is Priority";
-            this.checkBox_IsPriority.UseVisualStyleBackColor = true;
-            this.checkBox_IsPriority.CheckedChanged += new System.EventHandler(this.checkBox_IsPriority_CheckedChanged);
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.removeDiscountButton);
+            this.panel3.Controls.Add(this.discountAddButton);
+            this.panel3.Controls.Add(this.discountListBox);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Location = new System.Drawing.Point(348, 377);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(478, 120);
+            this.panel3.TabIndex = 13;
             // 
-            // addressControl1
+            // label1
             // 
-            this.addressControl1.Location = new System.Drawing.Point(3, 3);
-            this.addressControl1.Name = "addressControl1";
-            this.addressControl1.Size = new System.Drawing.Size(475, 203);
-            this.addressControl1.TabIndex = 13;
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(3, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Discounts";
+            // 
+            // discountListBox
+            // 
+            this.discountListBox.FormattingEnabled = true;
+            this.discountListBox.Location = new System.Drawing.Point(3, 42);
+            this.discountListBox.Name = "discountListBox";
+            this.discountListBox.Size = new System.Drawing.Size(307, 69);
+            this.discountListBox.TabIndex = 3;
+            // 
+            // discountAddButton
+            // 
+            this.discountAddButton.Location = new System.Drawing.Point(316, 23);
+            this.discountAddButton.Name = "discountAddButton";
+            this.discountAddButton.Size = new System.Drawing.Size(111, 41);
+            this.discountAddButton.TabIndex = 4;
+            this.discountAddButton.Text = "Add";
+            this.discountAddButton.UseVisualStyleBackColor = true;
+            this.discountAddButton.Click += new System.EventHandler(this.discountAddButton_Click);
+            // 
+            // removeDiscountButton
+            // 
+            this.removeDiscountButton.Location = new System.Drawing.Point(316, 70);
+            this.removeDiscountButton.Name = "removeDiscountButton";
+            this.removeDiscountButton.Size = new System.Drawing.Size(111, 41);
+            this.removeDiscountButton.TabIndex = 4;
+            this.removeDiscountButton.Text = "Remove";
+            this.removeDiscountButton.UseVisualStyleBackColor = true;
+            this.removeDiscountButton.Click += new System.EventHandler(this.removeDiscountButton_Click);
+            // 
+            // addressControl2
+            // 
+            this.addressControl2.Location = new System.Drawing.Point(6, 4);
+            this.addressControl2.Name = "addressControl2";
+            this.addressControl2.Size = new System.Drawing.Size(492, 203);
+            this.addressControl2.TabIndex = 0;
             // 
             // CustomersTab
             // 
@@ -291,6 +352,8 @@ namespace ObjectOrientedPractics.View.Tabs
             this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -315,5 +378,11 @@ namespace ObjectOrientedPractics.View.Tabs
         private System.Windows.Forms.Panel addressControlPanel;
         private Control.AddressControl addressControl1;
         private System.Windows.Forms.CheckBox checkBox_IsPriority;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ListBox discountListBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button removeDiscountButton;
+        private System.Windows.Forms.Button discountAddButton;
+        private Control.AddressControl addressControl2;
     }
 }
