@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_Priority = new System.Windows.Forms.Panel();
+            this.label_PriorityOptions = new System.Windows.Forms.Label();
+            this.comboBox_DeliveryTime = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.comboBox_Status = new System.Windows.Forms.ComboBox();
             this.textBoxCreated = new System.Windows.Forms.TextBox();
             this.textBox_ID = new System.Windows.Forms.TextBox();
@@ -50,14 +54,12 @@
             this.grid_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grid_date_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grid_amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel_Priority = new System.Windows.Forms.Panel();
-            this.label_PriorityOptions = new System.Windows.Forms.Label();
-            this.comboBox_DeliveryTime = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.label_Total = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel_Priority.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel_Priority.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -71,7 +73,9 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.listBox_Cart);
+            this.panel1.Controls.Add(this.label_Total);
             this.panel1.Controls.Add(this.label_Amount);
+            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.addressControl1);
@@ -80,6 +84,52 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(866, 536);
             this.panel1.TabIndex = 0;
+            // 
+            // panel_Priority
+            // 
+            this.panel_Priority.Controls.Add(this.label_PriorityOptions);
+            this.panel_Priority.Controls.Add(this.comboBox_DeliveryTime);
+            this.panel_Priority.Controls.Add(this.label8);
+            this.panel_Priority.Location = new System.Drawing.Point(576, 5);
+            this.panel_Priority.Name = "panel_Priority";
+            this.panel_Priority.Size = new System.Drawing.Size(287, 89);
+            this.panel_Priority.TabIndex = 35;
+            this.panel_Priority.Visible = false;
+            // 
+            // label_PriorityOptions
+            // 
+            this.label_PriorityOptions.AutoSize = true;
+            this.label_PriorityOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_PriorityOptions.Location = new System.Drawing.Point(48, 0);
+            this.label_PriorityOptions.Name = "label_PriorityOptions";
+            this.label_PriorityOptions.Size = new System.Drawing.Size(93, 13);
+            this.label_PriorityOptions.TabIndex = 35;
+            this.label_PriorityOptions.Text = "Priority Options";
+            // 
+            // comboBox_DeliveryTime
+            // 
+            this.comboBox_DeliveryTime.FormattingEnabled = true;
+            this.comboBox_DeliveryTime.Items.AddRange(new object[] {
+            "9:00 – 11:00",
+            "11:00 – 13:00",
+            "13:00 – 15:00",
+            "15:00 – 17:00",
+            "17:00 – 19:00",
+            "19:00 – 21:00"});
+            this.comboBox_DeliveryTime.Location = new System.Drawing.Point(128, 22);
+            this.comboBox_DeliveryTime.Name = "comboBox_DeliveryTime";
+            this.comboBox_DeliveryTime.Size = new System.Drawing.Size(100, 21);
+            this.comboBox_DeliveryTime.TabIndex = 37;
+            this.comboBox_DeliveryTime.SelectedIndexChanged += new System.EventHandler(this.comboBox_DeliveryTime_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(48, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(74, 13);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "Delivery Time:";
             // 
             // comboBox_Status
             // 
@@ -261,51 +311,25 @@
             this.grid_amount.Name = "grid_amount";
             this.grid_amount.ReadOnly = true;
             // 
-            // panel_Priority
+            // label_Total
             // 
-            this.panel_Priority.Controls.Add(this.label_PriorityOptions);
-            this.panel_Priority.Controls.Add(this.comboBox_DeliveryTime);
-            this.panel_Priority.Controls.Add(this.label8);
-            this.panel_Priority.Location = new System.Drawing.Point(576, 5);
-            this.panel_Priority.Name = "panel_Priority";
-            this.panel_Priority.Size = new System.Drawing.Size(287, 89);
-            this.panel_Priority.TabIndex = 35;
-            this.panel_Priority.Visible = false;
+            this.label_Total.AutoSize = true;
+            this.label_Total.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_Total.Location = new System.Drawing.Point(611, 479);
+            this.label_Total.Name = "label_Total";
+            this.label_Total.Size = new System.Drawing.Size(68, 24);
+            this.label_Total.TabIndex = 12;
+            this.label_Total.Text = "0 RUB";
             // 
-            // label_PriorityOptions
+            // label10
             // 
-            this.label_PriorityOptions.AutoSize = true;
-            this.label_PriorityOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_PriorityOptions.Location = new System.Drawing.Point(48, 0);
-            this.label_PriorityOptions.Name = "label_PriorityOptions";
-            this.label_PriorityOptions.Size = new System.Drawing.Size(93, 13);
-            this.label_PriorityOptions.TabIndex = 35;
-            this.label_PriorityOptions.Text = "Priority Options";
-            // 
-            // comboBox_DeliveryTime
-            // 
-            this.comboBox_DeliveryTime.FormattingEnabled = true;
-            this.comboBox_DeliveryTime.Items.AddRange(new object[] {
-            "9:00 – 11:00",
-            "11:00 – 13:00",
-            "13:00 – 15:00",
-            "15:00 – 17:00",
-            "17:00 – 19:00",
-            "19:00 – 21:00"});
-            this.comboBox_DeliveryTime.Location = new System.Drawing.Point(128, 22);
-            this.comboBox_DeliveryTime.Name = "comboBox_DeliveryTime";
-            this.comboBox_DeliveryTime.Size = new System.Drawing.Size(100, 21);
-            this.comboBox_DeliveryTime.TabIndex = 37;
-            this.comboBox_DeliveryTime.SelectedIndexChanged += new System.EventHandler(this.comboBox_DeliveryTime_SelectedIndexChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(48, 26);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(74, 13);
-            this.label8.TabIndex = 36;
-            this.label8.Text = "Delivery Time:";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(612, 466);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 13);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Total Amount:";
             // 
             // OrdersTab
             // 
@@ -317,11 +341,11 @@
             this.Enter += new System.EventHandler(this.OrdersTab_Enter);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel_Priority.ResumeLayout(false);
+            this.panel_Priority.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel_Priority.ResumeLayout(false);
-            this.panel_Priority.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -354,5 +378,7 @@
         private System.Windows.Forms.Label label_PriorityOptions;
         private System.Windows.Forms.ComboBox comboBox_DeliveryTime;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label_Total;
+        private System.Windows.Forms.Label label10;
     }
 }

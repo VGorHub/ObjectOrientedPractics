@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Discounts;
+using ObjectOrientedPractics.Model.Enums;
 using ObjectOrientedPractics.View.Control;
 
 namespace ObjectOrientedPractics.View.Tabs
@@ -32,7 +34,8 @@ namespace ObjectOrientedPractics.View.Tabs
         }
         public CustomersTab()
         {
-            InitializeComponent();                    
+            InitializeComponent();
+            
         }        
         private void AddButton_Click(object sender, EventArgs e)
         {
@@ -42,13 +45,13 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     int index = CustomersListBox.SelectedIndex;
                     _customers[index].Fullname = _fullname;
-                    _address = addressControl1.GetAddress;
+                    _address = addressControl2.GetAddress;
                     _customers[index].Address = _address;
                     CustomersListBox.Items[index] = _fullname;
                 }
                 else
                 {
-                    _address = addressControl1.GetAddress;
+                    _address = addressControl2.GetAddress;
                     Model.Customers newCustomer = new Model.Customers(_fullname, _address);
                     newCustomer.IsPriority = checkBox_IsPriority.Checked;
                     _customers.Add(newCustomer);                    
@@ -87,15 +90,18 @@ namespace ObjectOrientedPractics.View.Tabs
         private void CustomersListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (CustomersListBox.SelectedIndex != -1)
-            {                
+            {
                 int index = CustomersListBox.SelectedIndex;
+                discountListBox.Items.Clear();
                 IdTextBox.Text = _customers[index].Id.ToString();
                 FullNameTexBox.Text = _customers[index].Fullname;
-                addressControl1.SetAddress = _customers[index].Address;
+                addressControl2.SetAddress = _customers[index].Address;
                 _fullname = FullNameTexBox.Text;
                 checkBox_IsPriority.Checked = _customers[index].IsPriority;
-
-
+                for (int i = 0; i < _customers[index].Discounts.Count;i++)
+                {
+                    discountListBox.Items.Add(_customers[index].Discounts[i].Info);
+                }               
                 ErrorLabel.Visible = false;
             }
         }
@@ -106,7 +112,8 @@ namespace ObjectOrientedPractics.View.Tabs
             FullNameTexBox.Text = "";                      
             ErrorLabel.Visible = false;
             _fullname = "";
-            addressControl1.ClearTexBox();
+            addressControl2.ClearTexBox();
+            discountListBox.Items.Clear();
         }
 
         private void GenerateButton_Click(object sender, EventArgs e)
@@ -133,6 +140,44 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _customers[CustomersListBox.SelectedIndex].IsPriority= checkBox_IsPriority.Checked;
             }
+        }
+
+        private void discountAddButton_Click(object sender, EventArgs e)
+        {
+            var form = new AddDiscountForm();
+            var result = form.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {                
+                int index = CustomersListBox.SelectedIndex;
+                Category category = form.Category;
+                _customers[index].Discounts.Add(new PercentDiscount(category));
+
+                discountListBox.Items.Clear();
+                for (int i = 0; i < _customers[index].Discounts.Count; i++)
+                {
+                    discountListBox.Items.Add(_customers[index].Discounts[i].Info);
+                }               
+                
+                
+            }
+        }
+
+        private void removeDiscountButton_Click(object sender, EventArgs e)
+        {
+            if(CustomersListBox.SelectedIndex != 0)
+            {
+                if (discountListBox.SelectedIndex != 0)
+                {
+                    _customers[CustomersListBox.SelectedIndex].Discounts.RemoveAt(discountListBox.SelectedIndex);
+                    discountListBox.Items.Clear();
+                    for (int i = 0; i < _customers[CustomersListBox.SelectedIndex].Discounts.Count; i++)
+                    {
+                        discountListBox.Items.Add(_customers[CustomersListBox.SelectedIndex].Discounts[i].Info);
+                    }
+                }
+            }
+            
         }
     }
 }

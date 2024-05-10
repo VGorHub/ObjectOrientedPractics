@@ -1,12 +1,8 @@
 ﻿using ObjectOrientedPractics.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.Model.Orders;
 using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.View.Tabs

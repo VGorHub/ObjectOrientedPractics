@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.AxHost;
+using ObjectOrientedPractics.Model.Enums;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Orders
 {
     public class Order
     {
@@ -17,6 +13,23 @@ namespace ObjectOrientedPractics.Model
         private double _totalPrice;
         OrderStatus _orderStatus = 0;
         private readonly string _fullname;
+        private double _discountAmount;
+
+        public double DiscountAmount
+        {
+            get
+            {
+                return _discountAmount;
+            }
+            set
+            {
+                _discountAmount = value;
+            }
+        }
+        public double Total()
+        {
+            return _cart.Amount - DiscountAmount;
+        }
 
         public OrderStatus OrderStatus
         {
