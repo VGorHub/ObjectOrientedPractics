@@ -7,7 +7,7 @@ namespace ObjectOrientedPractics.Model.Discounts
     internal class PercentDiscount : IDiscount
     {
         
-        private double _discount = 0.01;
+        private double _discount;
         private Category _category;
         private double _spentInCategory;
 
@@ -59,12 +59,11 @@ namespace ObjectOrientedPractics.Model.Discounts
         }
         public double Apply(List<Item> items)
         {
-            double totalDiscount = 0;
             foreach (var item in items)
             {
                 if (item.ItemCategory == Category)
                 {
-                    item.Cost = (float)(item.Cost*(1- Discount));
+                    //item.Cost = (float)(item.Cost*(1- Discount));
                     SpentInCategory = SpentInCategory + item.Cost;
                 }
             }
@@ -77,6 +76,13 @@ namespace ObjectOrientedPractics.Model.Discounts
             {
                 Discount = SpentInCategory % 100000;
             }
+        }
+
+        public PercentDiscount(Category category)
+        {
+            Discount = 0.01;
+            Category = category;
+            SpentInCategory = 0;            
         }
     }
 }

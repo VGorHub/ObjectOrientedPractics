@@ -15,7 +15,8 @@ namespace ObjectOrientedPractics.Model
         private static int _counter = 0;
         private Cart _cart;
         private List<Order> _orders;
-        private List<IDiscount> _discounts;
+        private List<IDiscount> _discounts ;        
+
 
         public List<IDiscount> Discounts
         {
@@ -92,6 +93,7 @@ namespace ObjectOrientedPractics.Model
             Cart = new Cart();
             Orders = new List<Order>();
             IsPriority = false;
+            Discounts = new List<IDiscount>();
             Discounts.Add(new PointsDiscount());
         }        
     }

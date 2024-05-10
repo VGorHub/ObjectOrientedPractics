@@ -11,7 +11,7 @@ namespace ObjectOrientedPractics.Model.Discounts
         {
             get
             {
-                return $" – {PointsCount} баллов";
+                return $"Накопительная – {PointsCount} баллов";
             }
         }
          
@@ -68,6 +68,11 @@ namespace ObjectOrientedPractics.Model.Discounts
             {
                 SetPointsCount = PointsCount + (int)(item.Cost * 0.10);
             }
+        }
+
+        public PointsDiscount()
+        {            
+            SetPointsCount = 0;
         }
     }
 }

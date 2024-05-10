@@ -1,14 +1,9 @@
 ﻿using ObjectOrientedPractics.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using ObjectOrientedPractics.Model.Enums;
 using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
+using ObjectOrientedPractics.Model.Orders;
 using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.View.Tabs
@@ -88,6 +83,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 textBoxCreated.Text = _orders[index].CreationDate.ToString();
                 addressControl1.SetAddress = _orders[index].DeliveryAddress;
                 label_Amount.Text = _orders[index].Cart.Amount.ToString() + "RUB";
+                label_Total.Text = _orders[index].Total().ToString() + "RUB";   
                 listBox_Cart.Items.Clear();
                 for (int i = 0; i < _orders[index].Cart.Items.Count; i++)
                 {

@@ -62,6 +62,12 @@
     <Compile Include="Model\Store.cs" />
     <Compile Include="Model\Enums\WishTimeEnum.cs" />
     <Compile Include="Services\ValueValidator.cs" />
+    <Compile Include="View\AddDiscountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddDiscountForm.Designer.cs">
+      <DependentUpon>AddDiscountForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Control\AddressControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     <Compile Include="View\Tabs\PriorityOrdersTab.Designer.cs">
       <DependentUpon>PriorityOrdersTab.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\AddDiscountForm.resx">
+      <DependentUpon>AddDiscountForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Control\AddressControl.resx">
       <DependentUpon>AddressControl.cs</DependentUpon>
     </EmbeddedResource>

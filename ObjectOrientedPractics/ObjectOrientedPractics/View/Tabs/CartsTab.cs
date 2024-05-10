@@ -12,7 +12,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private List<Customers> _customers;
         private List<Item> _items;
         private Customers _currentCustomer;
-
+        private double totalDiscount = 0;
         private Customers CurrentCustomer 
         { 
             get { return _currentCustomer; }
@@ -72,12 +72,21 @@ namespace ObjectOrientedPractics.View.Tabs
             if(comboBox_Customers.SelectedIndex != -1)
             {
                 CurrentCustomer = _customers[comboBox_Customers.SelectedIndex];
-                UpdateListBoxCart();
+                discountCheckedListBox.Items.Clear();
+                UpdateListBoxCart();                
+                
+                for (int i = 0;i < CurrentCustomer.Discounts.Count; i++)
+                {
+                    discountCheckedListBox.Items.Add(CurrentCustomer.Discounts[i].Info);
+                    discountCheckedListBox.SetItemChecked(i, true);
+                }
+                
             }
         } 
         private void UpdateListBoxCart()
         {
-            if(CurrentCustomer != null)
+            updateDiscount();
+            if (CurrentCustomer != null)
             {
                 listBox_Cart.Items.Clear();
                 foreach (var currentCustomerItem in CurrentCustomer.Cart.Items)
@@ -141,18 +150,32 @@ namespace ObjectOrientedPractics.View.Tabs
                     if (CurrentCustomer.IsPriority)
                     {
                         PriorityOrder newOrder = new PriorityOrder(DateTime.Now, CurrentCustomer.Address, cart, CurrentCustomer.Fullname, DateTime.Now, WishTimeEnum.NineToEleven);
+                        newOrder.DiscountAmount = totalDiscount;
                         CurrentCustomer.Orders.Add(newOrder);
                     }
                     else
                     {
                         
                         Order newOrder = new Order(DateTime.Now, CurrentCustomer.Address, cart, CurrentCustomer.Fullname);
+                        newOrder.DiscountAmount = totalDiscount;
                         CurrentCustomer.Orders.Add(newOrder);
                     }
-                    
+
+                    for (int i = 0; i < discountCheckedListBox.Items.Count; i++)
+                    {
+
+                        if (discountCheckedListBox.GetItemChecked(i))
+                        {
+                            CurrentCustomer.Discounts[i].Apply(CurrentCustomer.Cart.Items);
+                            CurrentCustomer.Discounts[i].Update(CurrentCustomer.Cart.Items);
+                        }
+                    }                    
                     listBox_Cart.Items.Clear();
                     CurrentCustomer.Cart.Items.Clear();
                     label_Amount.Text = CurrentCustomer.Cart.Amount.ToString() + " RUB";
+                    comboBox_Customers.SelectedIndex = -1;
+                    discountCheckedListBox.Items.Clear();
+                    updateDiscount();
                 }
             }
         }
@@ -168,5 +191,27 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             RefreshData();
         }
+        
+        private void updateDiscount()
+        {
+            totalDiscount = 0;
+            for (int i = 0; i < discountCheckedListBox.Items.Count; i++)
+            {
+                
+                if (discountCheckedListBox.GetItemChecked(i))
+                {
+                    totalDiscount += CurrentCustomer.Discounts[i].Calculate(CurrentCustomer.Cart.Items);
+                }
+            }
+            discountAmountLabel.Text = totalDiscount.ToString();
+            TotalLabel.Text = (CurrentCustomer.Cart.Amount - totalDiscount).ToString();
+        }
+        private void discountCheckedListBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+            updateDiscount();
+        }
+
+        
     }
 }
