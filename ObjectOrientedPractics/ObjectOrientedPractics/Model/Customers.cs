@@ -15,6 +15,7 @@ namespace ObjectOrientedPractics.Model
         private static int _counter = 0;
         private Cart _cart;
         private List<Order> _orders;
+        public bool IsPriority { get; set; }
 
         public int Id
         {
@@ -82,6 +83,7 @@ namespace ObjectOrientedPractics.Model
             Address = address;
             Cart = new Cart();
             Orders = new List<Order>();
+            IsPriority = false;
         }        
     }
 }

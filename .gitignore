@@ -1,0 +1,17 @@
+﻿################################################################################
+# Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
+################################################################################
+
+/ObjectOrientedPractics/.vs/ObjectOrientedPractics/FileContentIndex
+/ObjectOrientedPractics/.vs/ObjectOrientedPractics/v17/.suo
+/ObjectOrientedPractics/.vs/ObjectOrientedPractics/v17/DocumentLayout.json
+/ObjectOrientedPractics/ObjectOrientedPractics/.vs/ObjectOrientedPractics.csproj.dtbcache.json
+/ObjectOrientedPractics/ObjectOrientedPractics/bin/Debug/ObjectOrientedPractics.exe
+/ObjectOrientedPractics/ObjectOrientedPractics/bin/Debug/ObjectOrientedPractics.pdb
+/ObjectOrientedPractics/ObjectOrientedPractics/obj/Debug/DesignTimeResolveAssemblyReferences.cache
+/ObjectOrientedPractics/ObjectOrientedPractics/obj/Debug/ObjectOrientedPractics.csproj.CoreCompileInputs.cache
+/ObjectOrientedPractics/ObjectOrientedPractics/obj/Debug/ObjectOrientedPractics.csproj.FileListAbsolute.txt
+/ObjectOrientedPractics/ObjectOrientedPractics/obj/Debug/ObjectOrientedPractics.csproj.GenerateResource.cache
+/ObjectOrientedPractics/ObjectOrientedPractics/obj/Debug/ObjectOrientedPractics.exe
+/ObjectOrientedPractics/ObjectOrientedPractics/obj/Debug/ObjectOrientedPractics.pdb
+/ObjectOrientedPractics/ObjectOrientedPractics/obj/Debug/ObjectOrientedPractics.View.Tabs.PriorityOrdersTab.resources

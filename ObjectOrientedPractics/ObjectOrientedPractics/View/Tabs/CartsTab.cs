@@ -141,12 +141,22 @@ namespace ObjectOrientedPractics.View.Tabs
                 else
                 {
                     Cart cart = new Cart();
-                    foreach(var item in CurrentCustomer.Cart.Items)
+                    foreach (var item in CurrentCustomer.Cart.Items)
                     {
                         cart.Items.Add(item);
                     }
-                    Order newOrder = new Order(DateTime.Now, CurrentCustomer.Address, cart, CurrentCustomer.Fullname);
-                    CurrentCustomer.Orders.Add(newOrder);
+                    if (CurrentCustomer.IsPriority)
+                    {
+                        PriorityOrder newOrder = new PriorityOrder(DateTime.Now, CurrentCustomer.Address, cart, CurrentCustomer.Fullname, DateTime.Now, WishTimeEnum.NineToEleven);
+                        CurrentCustomer.Orders.Add(newOrder);
+                    }
+                    else
+                    {
+                        
+                        Order newOrder = new Order(DateTime.Now, CurrentCustomer.Address, cart, CurrentCustomer.Fullname);
+                        CurrentCustomer.Orders.Add(newOrder);
+                    }
+                    
                     listBox_Cart.Items.Clear();
                     CurrentCustomer.Cart.Items.Clear();
                     label_Amount.Text = CurrentCustomer.Cart.Amount.ToString() + " RUB";
