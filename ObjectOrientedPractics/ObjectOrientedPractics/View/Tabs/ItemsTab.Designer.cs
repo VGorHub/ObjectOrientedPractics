@@ -53,6 +53,8 @@ namespace ObjectOrientedPractics.View.Tabs
             this.SelectedItemsLabel = new System.Windows.Forms.Label();
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.ItemTab = new System.Windows.Forms.Panel();
+            this.FindTextBox = new System.Windows.Forms.TextBox();
+            this.OrderByComboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -67,6 +69,8 @@ namespace ObjectOrientedPractics.View.Tabs
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.OrderByComboBox);
+            this.panel1.Controls.Add(this.FindTextBox);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.ItemsLabel);
             this.panel1.Controls.Add(this.ItemsListBox);
@@ -175,9 +179,9 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ItemsListBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ItemsListBox.FormattingEnabled = true;
             this.ItemsListBox.ItemHeight = 19;
-            this.ItemsListBox.Location = new System.Drawing.Point(3, 48);
+            this.ItemsListBox.Location = new System.Drawing.Point(3, 105);
             this.ItemsListBox.Name = "ItemsListBox";
-            this.ItemsListBox.Size = new System.Drawing.Size(333, 479);
+            this.ItemsListBox.Size = new System.Drawing.Size(333, 384);
             this.ItemsListBox.TabIndex = 0;
             this.ItemsListBox.SelectedIndexChanged += new System.EventHandler(this.ItemsListBox_SelectedIndexChanged);
             // 
@@ -371,6 +375,27 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ItemTab.Size = new System.Drawing.Size(835, 608);
             this.ItemTab.TabIndex = 10;
             // 
+            // FindTextBox
+            // 
+            this.FindTextBox.Location = new System.Drawing.Point(33, 55);
+            this.FindTextBox.Name = "FindTextBox";
+            this.FindTextBox.Size = new System.Drawing.Size(261, 20);
+            this.FindTextBox.TabIndex = 3;
+            this.FindTextBox.TextChanged += new System.EventHandler(this.FindTextBox_TextChanged);
+            // 
+            // OrderByComboBox
+            // 
+            this.OrderByComboBox.FormattingEnabled = true;
+            this.OrderByComboBox.Items.AddRange(new object[] {
+            "По имени",
+            "По возрастанию цены",
+            "По убыванию цены"});
+            this.OrderByComboBox.Location = new System.Drawing.Point(76, 507);
+            this.OrderByComboBox.Name = "OrderByComboBox";
+            this.OrderByComboBox.Size = new System.Drawing.Size(121, 21);
+            this.OrderByComboBox.TabIndex = 4;
+            this.OrderByComboBox.SelectedIndexChanged += new System.EventHandler(this.OrderByComboBox_SelectedIndexChanged);
+            // 
             // ItemsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -418,5 +443,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private System.Windows.Forms.Button GenerateButton;
         private System.Windows.Forms.ComboBox CategoryComboBox;
         private System.Windows.Forms.Label CategoryLabel;
+        private System.Windows.Forms.TextBox FindTextBox;
+        private System.Windows.Forms.ComboBox OrderByComboBox;
     }
 }
