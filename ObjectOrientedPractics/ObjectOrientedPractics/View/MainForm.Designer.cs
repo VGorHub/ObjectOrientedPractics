@@ -124,6 +124,7 @@ namespace ObjectOrientedPractics
         private System.Windows.Forms.TabPage CartsTabPage;
         private System.Windows.Forms.TabPage OrdersTab;
         private System.Windows.Forms.TabPage tabPage1;
+
     }
 }
 

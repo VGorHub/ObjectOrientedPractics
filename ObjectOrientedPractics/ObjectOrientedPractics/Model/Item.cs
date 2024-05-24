@@ -12,7 +12,20 @@ namespace ObjectOrientedPractics.Model
         private float _cost;
         private static int _counter = 0;
         private Category _itemCategory;
+        /// <summary>
+        /// Событие при обновлении <see cref="Cost"/> объекта <see cref="Item"/>.
+        /// </summary>
+        public event EventHandler<EventArgs> CostChanged;
 
+        /// <summary>
+        /// Событие при обновлении <see cref="Name"/> объекта <see cref="Item"/>.
+        /// </summary>
+        public event EventHandler<EventArgs> NameChanged;
+
+        /// <summary>
+        /// Событие при обновлении <see cref="Info"/> объекта <see cref="Item"/>.
+        /// </summary>
+        public event EventHandler<EventArgs> InfoChanged;
         public int Id
         {
             get
@@ -36,6 +49,7 @@ namespace ObjectOrientedPractics.Model
             {                
                 ValueValidator.AssertStringOnLength(value,200,nameof(Name));
                 _name = value;
+                NameChanged?.Invoke(this, EventArgs.Empty);
             }
         }
         public string Info
@@ -48,6 +62,7 @@ namespace ObjectOrientedPractics.Model
             {               
                 ValueValidator.AssertStringOnLength(value, 1000, nameof(Info));
                 _info = value;
+                InfoChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -65,6 +80,7 @@ namespace ObjectOrientedPractics.Model
                     throw new Exception("Цена товара должена быть от 0 до 100 000");
                 }
                 _cost = value;
+                CostChanged?.Invoke(this, EventArgs.Empty);
             }
         }
         public Category ItemCategory

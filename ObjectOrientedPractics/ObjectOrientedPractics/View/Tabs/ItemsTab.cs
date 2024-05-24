@@ -16,8 +16,10 @@ namespace ObjectOrientedPractics.View.Tabs
         private string _info;
         private string _cost;
         private Category _itemCategory;
-        private DataTools.CompareProperties SortCompare { get; set; }        
+        private DataTools.CompareProperties SortCompare { get; set; }
         private Predicate<Item> FilterCompare { get; set; }
+
+        public event EventHandler<EventArgs> ItemsChanged;
 
         public List<Item> Items
         {
@@ -29,6 +31,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 UpdateDisplayedItems();
                 _items = value;
+                ItemsChanged?.Invoke(this, EventArgs.Empty);
             }
         }
         public List<Item> DisplayedItems

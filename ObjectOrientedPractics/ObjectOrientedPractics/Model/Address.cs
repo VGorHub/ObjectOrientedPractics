@@ -17,7 +17,8 @@ namespace ObjectOrientedPractics.Model
         private string _street; // - улица, строка, не более 100 символов.
         private string _building; // – номер дома, строка, не более 10 символов.
         private string _apartment;// – номер квартиры/помещения, не более 10 символов.
-
+        
+        public event EventHandler<EventArgs> AddressChanged;
         public string Index
         {
             get
@@ -34,6 +35,7 @@ namespace ObjectOrientedPractics.Model
                 {
                     int.Parse(value);
                     _index = value;
+                    AddressChanged?.Invoke(this, EventArgs.Empty);
                 }
                 catch
                 {
@@ -51,6 +53,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 50, nameof(Country));
                 _country = value;
+                AddressChanged?.Invoke(this, EventArgs.Empty);
             }
         }
         public string City
@@ -63,6 +66,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 50, nameof(City));
                 _city = value;
+                AddressChanged?.Invoke(this, EventArgs.Empty);
             }
         }
         public string Street
@@ -75,7 +79,9 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 100, nameof(Street));
                 _street = value;
+                AddressChanged?.Invoke(this, EventArgs.Empty);
             }
+
         }
         public string Building
         {
@@ -87,6 +93,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 10, nameof(Building));
                 _building = value;
+                AddressChanged?.Invoke(this, EventArgs.Empty);
             }
         }
         public string Apartment
@@ -99,6 +106,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 10, nameof(Apartment));
                 _apartment = value;
+                AddressChanged?.Invoke(this, EventArgs.Empty);
             }
         }
         public Address()

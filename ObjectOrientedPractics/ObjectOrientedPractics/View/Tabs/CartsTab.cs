@@ -180,12 +180,12 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        private void RefreshData()
+        public void RefreshData()
         {
             comboBox_Customers.SelectedIndex = -1;
             label_Amount.Text = "0 RUB";
             InitializeListBoxItems();
-            InitializeComboBoxCustomers();
+            InitializeComboBoxCustomers();            
         }
         private void CartsTab_Enter(object sender, EventArgs e)
         {
