@@ -31,7 +31,7 @@ namespace ObjectOrientedPractics
             cartsTab.Customers = _store.Customers;
             cartsTab.Items = _store.Items;
             ordersTab.Customers = _store.Customers;
-           
+
 
             itemsTab.Dock = DockStyle.Fill;
             customersTab.Dock = DockStyle.Fill;
@@ -44,7 +44,16 @@ namespace ObjectOrientedPractics
             TabControl.TabPages[2].Controls.Add(cartsTab);
             TabControl.TabPages[3].Controls.Add(ordersTab);
             TabControl.TabPages[4].Controls.Add(priorityOrdersTab);
+
+
+            itemsTab.ItemsChanged += DataChanged;
+            void DataChanged(object sender, EventArgs e)
+            {
+                cartsTab.RefreshData();
+                //OrdersTab.RefreshData();
+            }
         }
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
