@@ -3,35 +3,53 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class ItemsTab : UserControl
     {
 
-        private List<Item> _items ;
+        private List<Item> _items;
+        private List<Item> _displayedItems;
         private string _name;
         private string _info;
         private string _cost;
         private Category _itemCategory;
+        private DataTools.CompareProperties SortCompare { get; set; }        
+        private Predicate<Item> FilterCompare { get; set; }
 
-        public List<Item> Items 
-        { 
-            get 
+        public List<Item> Items
+        {
+            get
             {
                 return _items;
             }
-            set 
+            set
             {
-                updateListBox(value);
-                _items = value;                
-            } 
+                UpdateDisplayedItems();
+                _items = value;
+            }
+        }
+        public List<Item> DisplayedItems
+        {
+            get => _displayedItems;
+            set
+            {
+                _displayedItems = value;
+
+                if (DisplayedItems != null)
+                {
+                    updateListBox();
+                }
+            }
         }
         public ItemsTab()
         {
             InitializeComponent();
             Items = new List<Item>();
             CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
+            OrderByComboBox.SelectedIndex = 0;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -51,13 +69,14 @@ namespace ObjectOrientedPractics.View.Tabs
                             _items[index].Cost = floatValue;
                             _items[index].ItemCategory = _itemCategory;
                             ItemsListBox.Items[index] = _name;
-
+                            UpdateDisplayedItems();
                         }
                         else
                         {
                             Item newItem = new Item(_name, _info, floatValue , _itemCategory);
                             _items.Add(newItem);
-                            ItemsListBox.Items.Add(newItem.Name);                            
+                            ItemsListBox.Items.Add(newItem.Name); 
+                            UpdateDisplayedItems();
                             
                         }
                         ClearInputs();
@@ -113,11 +132,11 @@ namespace ObjectOrientedPractics.View.Tabs
             if (ItemsListBox.SelectedIndex != -1)
             {
                 int index = ItemsListBox.SelectedIndex;
-                IdTextBox.Text = _items[index].Id.ToString();
-                NameTextBox.Text = _items[index].Name;
-                DescriptionTextBox.Text = _items[index].Info;
-                CostTexBox.Text = _items[index].Cost.ToString();
-                CategoryComboBox.SelectedIndex = ((int)_items[index].ItemCategory);
+                IdTextBox.Text = _displayedItems[index].Id.ToString();
+                NameTextBox.Text = _displayedItems[index].Name;
+                DescriptionTextBox.Text = _displayedItems[index].Info;
+                CostTexBox.Text = _displayedItems[index].Cost.ToString();
+                CategoryComboBox.SelectedIndex = ((int)_displayedItems[index].ItemCategory);
                 _name = NameTextBox.Text;
                 _info = DescriptionTextBox.Text;
                 _cost = CostTexBox.Text;
@@ -132,17 +151,19 @@ namespace ObjectOrientedPractics.View.Tabs
             if (index != -1)
             {
                 _items.RemoveAt(index);
-                ItemsListBox.Items.RemoveAt(index);                
+                ItemsListBox.Items.RemoveAt(index);
                 ClearInputs();
+                UpdateDisplayedItems();
             }
-            
+
         }
 
         private void GenerateButton_Click(object sender, EventArgs e)
         {
             Item newItem = ItemFactory.GenerateItem(_items);
             _items.Add(newItem);
-            ItemsListBox.Items.Add(newItem.Name);            
+            ItemsListBox.Items.Add(newItem.Name);
+            UpdateDisplayedItems();
         }
 
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -150,19 +171,95 @@ namespace ObjectOrientedPractics.View.Tabs
             if (CategoryComboBox.SelectedItem != null)
             {
                 _itemCategory = (Category)CategoryComboBox.SelectedItem;
-            }                
-        }
-
-        private void updateListBox(List<Item> newitems)
-        {
-            ItemsListBox.Items.Clear();
-            ItemsListBox.SelectedIndex = -1;
-            ClearInputs();
-            for(int i = 0; i < newitems.Count; i++)
-            {
-                ItemsListBox.Items.Add(newitems[i].Name);
             }
         }
 
+        private void updateListBox()
+        {
+            //ItemsListBox.Items.Clear();
+            //ItemsListBox.SelectedIndex = -1;
+
+
+            var selectedItem = ItemsListBox.SelectedItem;
+            ItemsListBox.Items.Clear();
+            //ClearInputs();
+
+            foreach (var item in DisplayedItems)
+            {
+                ItemsListBox.Items.Add(item.Name);
+            }
+
+            ItemsListBox.SelectedItem = selectedItem;
+
+        }
+        private void UpdateDisplayedItems()
+        {
+            var displayedItems = Items;
+
+            if (FilterCompare != null)
+            {
+                displayedItems = DataTools.FilterItems(displayedItems, FilterCompare);
+            }
+
+            if (SortCompare != null)
+            {
+                displayedItems = DataTools.SortItems(displayedItems, SortCompare);
+            }
+
+            DisplayedItems = displayedItems;
+            //SetTextBoxes();
+        }
+
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (FindTextBox.Text.Length == 0)
+            {
+                FilterCompare = null;
+            }
+            else
+            {
+                FilterCompare = (item) => { return item.Name.Contains(FindTextBox.Text); };
+            }
+
+            UpdateDisplayedItems();
+        }
+
+        private void OrderByComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (OrderByComboBox.SelectedIndex)
+            {
+                case 0:
+                    {
+                        SortCompare = (firstItem, secondItem) =>
+                        {
+                            return firstItem.Name.CompareTo(secondItem.Name) < 0;
+                        };
+
+                        break;
+                    }
+                case 1:
+                    {
+                        SortCompare = (firstItem, secondItem) =>
+                        {
+                            return firstItem.Cost.CompareTo(secondItem.Cost) < 0;
+                        };
+
+                        break;
+                    }
+                case 2:
+                    {
+                        SortCompare = (firstItem, secondItem) =>
+                        {
+                            return firstItem.Cost.CompareTo(secondItem.Cost) > 0;
+                        };
+
+                        break;
+                    }
+            }
+
+            var selectedItem = ItemsListBox.SelectedItem;
+            UpdateDisplayedItems();
+        }
     }
+    
 }
